@@ -146,11 +146,17 @@ $presentation-heading-font-weight: 700;
 #title-slide .title {
   color: $am-navy;
   font-weight: 800;
+  font-size: 1.7em;        // menor: evita colidir com a logo
+  line-height: 1.1;
+  margin-top: 2.4em;       // empurra o bloco para baixo da logo
 }
 #title-slide .subtitle {
   color: $am-blue;
   font-weight: 600;
+  font-size: 0.7em;
+  margin-top: 0.5em;
 }
 #title-slide .author, #title-slide .quarto-title-authors {
   color: $am-ink;
 }
+#title-slide .date { color: $am-ink; font-size: 0.7em; }

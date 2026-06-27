@@ -19,8 +19,8 @@ format:
     background-transition: fade
 title-slide-attributes:
   data-background-image: assets/logo-am.png
-  data-background-size: 400px
-  data-background-position: center 12%
+  data-background-size: 280px
+  data-background-position: center 8%
 ---
 
 # 🎯 Abertura {background-color="#1c2d4f"}
