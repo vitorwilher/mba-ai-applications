@@ -48,7 +48,8 @@ consolidar por repetição e deixar o aluno pronto para o trabalho final.
 ## O que você sai sabendo fazer
 
 - Enxergar **qualquer projeto de IA** pelo mapa do **CRISP-DM aplicado a agentes**
-- Montar o ambiente: **VS Code + Python + Claude Code + Quarto + LaTeX**
+- Montar o ambiente: **bootstrap mínimo** (VS Code + Claude Code + conta Claude) e deixar as
+  **skills guiarem o resto** — Python/Quarto/LaTeX/Git, chaves de API, conta Meta e GitHub
 - Dirigir o Claude Code no ciclo **explore → plan → code → commit**
 - Construir uma **automação ponta a ponta**: dados → resumo com LLM → **WhatsApp**
 - Entender o que se espera do **trabalho final** da disciplina
@@ -59,7 +60,7 @@ consolidar por repetição e deixar o aluno pronto para o trabalho final.
 |---|---|---:|
 | 0 | Abertura | 5 |
 | 1 | **CRISP-DM aplicada a agentes de IA** (revisão via COPOM) | 25 |
-| 2 | **Setup**: VS Code, Python, Claude Code, Quarto + LaTeX | 30 |
+| 2 | **Setup completo**: bootstrap mínimo + skills (ferramentas, contas/APIs, Meta, GitHub) | 30 |
 | 3 | **Projeto-exemplo**: relatório semanal no WhatsApp | 35 |
 | 4 | Trabalho final e fechamento | 15 |
 
@@ -203,7 +204,8 @@ risca. As nossas duas embalam o **setup do ambiente** e o **paper de entrega**.
 
 O repositório traz **duas skills** prontas para o seu Claude Code — pastas que ele lê e usa:
 
-- **`setup-am`** — prepara o ambiente (instala ferramentas, cria `.venv` e a fundação do projeto)
+- **`setup-am`** — guia o **setup completo**: instala ferramentas, conduz contas/APIs e conta
+  Meta, conecta o GitHub, cria `.venv` e a fundação do projeto
 - **`paper-analise-macro`** — monta o paper de entrega em Quarto + LaTeX (PDF)
 
 Vamos ver o setup **na mão** para entender cada peça; a skill automatiza isso depois.
