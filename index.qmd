@@ -170,6 +170,23 @@ Sair desta parte com um ambiente onde você:
 para o trabalho final.
 :::
 
+## 🧩 O que é uma *skill*? {.smaller}
+
+Uma **skill** é uma **capacidade reutilizável** que você entrega ao Claude Code: um pacote
+com instruções (e arquivos de apoio) que ensina o agente a fazer **uma tarefa específica
+sempre do mesmo jeito**.
+
+- É uma **pasta** com um arquivo **`SKILL.md`** (um `name`, uma `description` de *quando
+  usar* e o passo a passo) + recursos opcionais (templates, scripts, exemplos)
+- O agente **lê a descrição** e **carrega a skill sozinho** quando a tarefa combina —
+  ou você pede: *"use a skill X"*
+- Você **escreve uma vez** e **reusa** em todo projeto — em vez de recolar o mesmo prompt
+
+::: {.callout-tip}
+Pense numa skill como um **procedimento operacional** do seu time, que o agente segue à
+risca. As nossas duas embalam o **setup do ambiente** e o **paper de entrega**.
+:::
+
 ## 🧩 As skills da disciplina {.smaller}
 
 O repositório traz **duas skills** prontas para o seu Claude Code — pastas que ele lê e usa:
