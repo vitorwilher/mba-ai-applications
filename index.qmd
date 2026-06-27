@@ -178,11 +178,12 @@ Antes de instalar nada, crie as contas. Comece pelas duas que sustentam o fluxo 
 |---|---|---|
 | **Claude.ai** | [claude.ai](https://claude.ai) → *Sign up* | Conversar com o Claude e usar o **Claude Code** logado na conta |
 | **GitHub** | [github.com/signup](https://github.com/signup) | Versionar o código e usar o **GitHub Actions** como orquestrador (agendar a automação) |
+| **Meta for Developers** | [developers.facebook.com](https://developers.facebook.com) → *Get Started* | Usar a **WhatsApp Cloud API** no projeto-exemplo (Parte 3) |
 
 ::: {.callout-note}
 A conta **Claude.ai** dá acesso ao Claude no navegador e autentica a extensão do Claude
-Code. A conta **GitHub** guarda o projeto e roda a automação na nuvem, sem depender da sua
-máquina ligada.
+Code. A conta **GitHub** guarda o projeto e roda a automação na nuvem. A conta **Meta** é o
+que libera o envio pelo **WhatsApp** — detalhamos na Parte 3.
 :::
 
 ## Passo 0 — As contas (2/2): chaves de API {.smaller}
@@ -402,6 +403,19 @@ Leia a ANTHROPIC_API_KEY do ambiente (.env).
 ::: {.callout-tip}
 **Saída estruturada** é o que torna o resumo confiável e formatável: sempre os mesmos
 campos, prontos para virar a mensagem do WhatsApp.
+:::
+
+## WhatsApp — criar a conta na Meta {.smaller}
+
+O envio usa a **WhatsApp Cloud API**, da Meta. Antes das credenciais, crie as contas:
+
+1. **Conta Meta / Facebook** — você precisa de uma conta no [facebook.com](https://facebook.com) para acessar o portal de desenvolvedores.
+2. **Meta for Developers** — entre em [developers.facebook.com](https://developers.facebook.com) → *Get Started* e registre-se como desenvolvedor (confirme e-mail/telefone).
+3. **Conta Comercial (Business)** — ao criar o app, a Meta vincula/abre uma **Meta Business Account**, que hospeda a sua **WhatsApp Business Account (WABA)** e o número de teste gratuito.
+
+::: {.callout-note}
+Para a **aula**, o número de teste gratuito e o destinatário cadastrado já bastam — não
+precisa de número próprio nem de verificação de empresa. Isso só é exigido para **produção**.
 :::
 
 ## WhatsApp Cloud API — onde pegar as credenciais {.smaller}
