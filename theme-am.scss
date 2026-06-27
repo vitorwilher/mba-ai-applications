@@ -146,9 +146,9 @@ $presentation-heading-font-weight: 700;
 #title-slide .title {
   color: $am-navy;
   font-weight: 800;
-  font-size: 1.7em;        // menor: evita colidir com a logo
+  font-size: 1.55em;       // menor: evita colidir com a logo
   line-height: 1.1;
-  margin-top: 2.4em;       // empurra o bloco para baixo da logo
+  margin-top: 3.2em;       // empurra o bloco bem para baixo da logo
 }
 #title-slide .subtitle {
   color: $am-blue;
