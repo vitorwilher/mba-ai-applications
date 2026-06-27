@@ -1,10 +1,11 @@
 ---
 name: setup-am
 description: >-
-  Prepara o ambiente de trabalho da disciplina AI Applications: verifica/instala VS Code,
-  Python, Claude Code, Quarto e LaTeX (TinyTeX), cria o .venv e a fundação do projeto
-  (CLAUDE.md, .gitignore, .env.example, requirements.txt) e confere tudo com `quarto check`.
-  Use no início de qualquer projeto da disciplina ou quando o ambiente precisar ser montado.
+  Guia e prepara o ambiente da disciplina AI Applications a partir do bootstrap mínimo
+  (VS Code + Claude Code + conta Claude): instala Python, Quarto, LaTeX (TinyTeX) e Git;
+  conduz a criação das chaves de API (Anthropic, Google, OpenAI) e da conta Meta (WhatsApp);
+  conecta o VS Code ao GitHub e publica o repositório; cria o .venv e a fundação do projeto;
+  e ajuda a rodar o exemplo da disciplina. Use no início de qualquer projeto ou setup.
 ---
 
 # Skill: Setup do ambiente (estilo Análise Macro)
@@ -19,15 +20,33 @@ Copie a pasta `skill-setup-am/` para as skills do seu Claude Code
 (`.claude/skills/setup-am/` no projeto, ou `~/.claude/skills/setup-am/` global) e peça:
 *"use a skill setup-am para preparar meu ambiente"*. Instruções de download no README.
 
-## Passo 0 — Contas (manual, conferir com o aluno)
+## Premissa: o bootstrap mínimo já foi feito
 
-Antes de instalar, garanta que o aluno tem as contas (a skill apenas lembra e linka):
+Esta skill assume que o aluno já fez **na mão** o mínimo: instalou o **VS Code**, a
+**extensão Claude Code** e está **logado na conta Claude**. Tudo o que vem abaixo a skill
+**guia/executa** a partir daqui — instalar ferramentas, criar chaves/contas, conectar o
+GitHub e rodar o exemplo.
 
-- **Claude.ai** — <https://claude.ai> (usar o Claude Code)
+> Conduza **uma etapa por vez** e **espere o aluno confirmar** antes de avançar. Não crie
+> contas por ele (isso é manual); guie com links e diga onde colar cada valor.
+
+## Passo 0 — Guiar a criação de contas e chaves
+
+Acompanhe o aluno na criação de cada conta/chave e ajude a preencher o `.env`:
+
 - **GitHub** — <https://github.com/signup> (versão + GitHub Actions)
-- **Meta for Developers** — <https://developers.facebook.com> (WhatsApp Cloud API)
-- **APIs**: Anthropic (<https://console.anthropic.com>), Google AI Studio
-  (<https://aistudio.google.com/apikey>), OpenAI (<https://platform.openai.com/api-keys>)
+- **Anthropic (API)** — <https://console.anthropic.com> → *Settings → API Keys → Create Key*
+  → `ANTHROPIC_API_KEY`
+- **Google AI Studio** — <https://aistudio.google.com/apikey> → *Create API key* → `GOOGLE_API_KEY`
+- **OpenAI** — <https://platform.openai.com/api-keys> → *Create new secret key* → `OPENAI_API_KEY`
+- **Meta for Developers (WhatsApp Cloud API)** — <https://developers.facebook.com> →
+  *Get Started* → criar app **Business** → adicionar **WhatsApp** → em *API Setup* pegar
+  **token**, **Phone number ID** e cadastrar o **número destinatário** de teste
+  (`WHATSAPP_TOKEN`, `WHATSAPP_PHONE_NUMBER_ID`, `WHATSAPP_DESTINO`)
+
+Lembre o aluno: a **conta Claude.ai** (assinatura) é diferente da **conta de API da
+Anthropic** (console, paga por uso). Cada chave aparece **uma única vez** — copie na hora.
+Coloque limites de gasto na Anthropic/OpenAI; o Gemini tem plano gratuito.
 
 ## Passo 1 — Detectar o sistema e instalar as ferramentas
 
@@ -125,6 +144,21 @@ Rode o verificador e reporte o que faltar:
 bash scripts/verificar-ambiente.sh
 quarto check
 ```
+
+## Passo 4 — Rodar o exemplo da disciplina
+
+Quando o ambiente estiver pronto, ajude o aluno a rodar o exemplo (relatório semanal no
+WhatsApp), que vive em `projeto-exemplo/` do repositório da disciplina:
+
+```bash
+cd projeto-exemplo
+pip install -r requirements.txt
+cp .env.example .env        # preencha as chaves (Passo 0)
+python main.py
+```
+
+Para o paper de entrega, oriente o uso da skill **paper-analise-macro**
+(`quarto render paper.qmd --to pdf`).
 
 ## Regras (não negociáveis)
 

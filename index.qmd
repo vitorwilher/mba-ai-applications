@@ -149,25 +149,37 @@ A direção é sua.
 
 # ⚙️ Parte 2 — Setup do ambiente {background-color="#1c2d4f"}
 
-## A meta do setup
+## Como vamos montar o ambiente {.smaller}
+
+A ideia: instalar **o mínimo na mão** e deixar o **agente guiar todo o resto**.
 
 :::: {.columns}
 ::: {.column width="58%"}
-Sair desta parte com um ambiente onde você:
-
-- Edita código no **VS Code**
-- Roda **Python** num ambiente isolado (`.venv`)
-- Dirige o **Claude Code dentro do VS Code**
-- Gera relatórios reprodutíveis em **HTML e PDF** com **Quarto + LaTeX**
+1. **Fase 1 — Bootstrap mínimo (na mão):** VS Code + extensão **Claude Code** + **conta Claude**
+2. **Fase 2 — Copiar as skills** do repositório da disciplina (`setup-am` e `paper-analise-macro`)
+3. **Fase 3 — Um prompt** chama as skills e te **guia em tudo**: instalar Python/Quarto/LaTeX/Git,
+   criar as **chaves de API**, a **conta Meta** (WhatsApp), conectar o **GitHub** e **rodar o exemplo**
 :::
 ::: {.column width="42%"}
 ![](assets/illus-terminal.svg)
 :::
 ::::
 
+::: {.callout-tip}
+Só a Fase 1 é manual. Depois dela, você **conversa com o agente** e ele conduz o passo a passo.
+:::
+
+## Fase 1 — O mínimo que você instala na mão {.smaller}
+
+Três coisas, uma vez só:
+
+1. **VS Code** — [code.visualstudio.com](https://code.visualstudio.com)
+2. **Extensão Claude Code** — na aba *Extensions* (`Ctrl/Cmd+Shift+X`), procure **Claude Code** (Anthropic) e instale
+3. **Conta Claude** — faça login na extensão com sua conta [claude.ai](https://claude.ai) (crie em *Sign up* se ainda não tem)
+
 ::: {.callout-note}
-É o mesmo ambiente que usamos no COPOM. Monte uma vez; serve para o resto da disciplina e
-para o trabalho final.
+Pronto: com isso o **agente já funciona**. Tudo que vem a seguir — ferramentas, contas de API,
+Meta, GitHub — o Claude Code instala/guia para você a partir das **skills**.
 :::
 
 ## 🧩 O que é uma *skill*? {.smaller}
@@ -227,6 +239,38 @@ cd mba-ai-applications && bash instalar-skills.sh   # → ~/.claude/skills
 
 ::: {.callout-tip}
 Depois, no Claude Code: *"use a skill setup-am"* ou *"use a skill paper-analise-macro"*.
+:::
+
+## Fase 3 — Um prompt guia o resto {.smaller}
+
+Com as skills no lugar, **um único prompt** conduz tudo o que falta:
+
+::: {.prompt}
+```text
+Use as skills setup-am e paper-analise-macro e me guie, passo a passo, em tudo
+que falta para eu rodar o exemplo da disciplina:
+- instalar Python, Quarto, LaTeX e Git (confirme antes de instalar);
+- criar as chaves de API (Anthropic, Google, OpenAI) e a conta Meta para o
+  WhatsApp, me dando os links e onde colar cada chave no .env;
+- conectar o VS Code ao GitHub e publicar o repositório;
+- montar a fundação do projeto e renderizar o paper de exemplo em PDF.
+Pergunte o que precisar e não avance sem eu confirmar cada etapa.
+```
+:::
+
+::: {.callout-note}
+O agente **não cria contas por você** (isso é manual e seguro assim), mas te leva pela mão:
+links, onde clicar e onde guardar cada chave — sem você decorar nada.
+:::
+
+## O detalhe por trás da skill {.smaller}
+
+Os próximos slides mostram, **na mão**, cada passo que a `setup-am` automatiza — para você
+entender o que o agente está fazendo nos bastidores.
+
+::: {.callout-tip}
+Na prática, **a skill conduz tudo isto** a partir do prompt da Fase 3. Use estes slides como
+**referência** quando quiser fazer (ou conferir) algum passo manualmente.
 :::
 
 ## Passo 0 — As contas (1/2) {.smaller}
