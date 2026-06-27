@@ -25,9 +25,42 @@ Ela cobre, em três partes:
 | [`ementa.md`](ementa.md) | Ementa completa da disciplina (4 encontros) |
 | [`index.qmd`](index.qmd) | Fonte da apresentação da Aula 4 |
 | [`trabalho-final.md`](trabalho-final.md) | Enunciado e rubrica do trabalho final |
+| [`skill-setup-am/`](skill-setup-am/) | Skill do Claude Code: prepara o ambiente (VS Code, Python, Quarto, LaTeX, `.venv`) |
 | [`skill-paper-am/`](skill-paper-am/) | Skill do Claude Code: template de paper Quarto+LaTeX + paper de exemplo |
 | [`projeto-exemplo/`](projeto-exemplo/) | Skeleton: relatório semanal → WhatsApp Cloud API |
 | [`CLAUDE.md`](CLAUDE.md) | Briefing do repositório para o Claude Code |
+
+## 🧩 Como baixar as skills
+
+As skills são apenas **pastas** (`skill-setup-am/`, `skill-paper-am/`). O Claude Code as
+encontra em `~/.claude/skills/` (uso pessoal) ou `.claude/skills/` (dentro de um projeto).
+
+**Opção A — clonar e usar o instalador (recomendado):**
+
+```bash
+git clone https://github.com/vitorwilher/mba-ai-applications.git
+cd mba-ai-applications
+bash instalar-skills.sh            # instala em ~/.claude/skills
+# ou: bash instalar-skills.sh --projeto   # instala em .claude/skills (pasta atual)
+```
+
+**Opção B — clonar e copiar à mão:**
+
+```bash
+git clone https://github.com/vitorwilher/mba-ai-applications.git
+mkdir -p ~/.claude/skills
+cp -r mba-ai-applications/skill-setup-am ~/.claude/skills/setup-am
+cp -r mba-ai-applications/skill-paper-am ~/.claude/skills/paper-analise-macro
+```
+
+**Opção C — baixar só uma pasta, sem clonar tudo (degit):**
+
+```bash
+npx degit vitorwilher/mba-ai-applications/skill-setup-am ~/.claude/skills/setup-am
+npx degit vitorwilher/mba-ai-applications/skill-paper-am ~/.claude/skills/paper-analise-macro
+```
+
+Depois, no Claude Code: *"use a skill setup-am"* ou *"use a skill paper-analise-macro"*.
 
 ## 🛠️ Como renderizar a apresentação
 

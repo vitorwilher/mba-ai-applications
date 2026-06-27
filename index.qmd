@@ -170,6 +170,43 @@ Sair desta parte com um ambiente onde você:
 para o trabalho final.
 :::
 
+## 🧩 As skills da disciplina {.smaller}
+
+O repositório traz **duas skills** prontas para o seu Claude Code — pastas que ele lê e usa:
+
+- **`setup-am`** — prepara o ambiente (instala ferramentas, cria `.venv` e a fundação do projeto)
+- **`paper-analise-macro`** — monta o paper de entrega em Quarto + LaTeX (PDF)
+
+Vamos ver o setup **na mão** para entender cada peça; a skill automatiza isso depois.
+
+::: {.callout-note}
+Skill é só uma **pasta** que o Claude Code encontra em `~/.claude/skills/` (uso pessoal) ou
+`.claude/skills/` (dentro do projeto). Nada para "instalar" além de copiar a pasta.
+:::
+
+## 🧩 Como baixar as skills {.smaller}
+
+Clone o repositório e rode o instalador (copia as duas pastas para `~/.claude/skills/`):
+
+```bash
+git clone https://github.com/vitorwilher/mba-ai-applications.git
+cd mba-ai-applications
+bash instalar-skills.sh            # ou: bash instalar-skills.sh --projeto
+```
+
+. . .
+
+Sem clonar tudo, baixe **só uma pasta** com o `degit`:
+
+```bash
+npx degit vitorwilher/mba-ai-applications/skill-setup-am ~/.claude/skills/setup-am
+npx degit vitorwilher/mba-ai-applications/skill-paper-am ~/.claude/skills/paper-analise-macro
+```
+
+::: {.callout-tip}
+Depois, no Claude Code: *"use a skill setup-am"* ou *"use a skill paper-analise-macro"*.
+:::
+
 ## Passo 0 — As contas (1/2) {.smaller}
 
 Antes de instalar nada, crie as contas. Comece pelas duas que sustentam o fluxo de trabalho:
@@ -360,7 +397,7 @@ Garanta que todo número exibido sai de um chunk que roda (regra de ouro).
 
 **Entrega**
 
-- [ ] skill **`skill-paper-am/`** copiada
+- [ ] skills instaladas (`instalar-skills.sh`)
 - [ ] `CLAUDE.md` com a **regra de ouro**
 - [ ] paper em **PDF** renderizando
 

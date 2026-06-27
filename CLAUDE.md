@@ -25,6 +25,8 @@ completo de automação (relatório semanal via WhatsApp).
 ├── theme-am.scss       # tema visual da Análise Macro (reveal.js)
 ├── _quarto.yml         # projeto Quarto → renderiza para docs/
 ├── assets/             # logo, ilustrações SVG, imagem da ementa original
+├── instalar-skills.sh  # copia as skills para ~/.claude/skills (ou .claude/skills)
+├── skill-setup-am/     # skill Claude Code: prepara o ambiente do projeto
 ├── skill-paper-am/     # skill Claude Code: template de paper Quarto+LaTeX + exemplo
 ├── projeto-exemplo/    # skeleton: relatório semanal → WhatsApp Cloud API
 └── docs/               # saída renderizada (GitHub Pages serve daqui)
