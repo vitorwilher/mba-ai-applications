@@ -1,0 +1,495 @@
+---
+title: "AI Applications — Síntese e Automação"
+subtitle: "Aula 4: CRISP-DM com agentes, setup do ambiente e um relatório semanal no WhatsApp"
+author: "Vitor Wilher — Análise Macro"
+lang: pt
+format:
+  revealjs:
+    theme: [default, theme-am.scss]
+    logo: assets/logo-am.png
+    embed-resources: true
+    slide-number: c/t
+    width: 1280
+    height: 720
+    incremental: true
+    code-overflow: wrap
+    transition: slide
+    background-transition: fade
+title-slide-attributes:
+  data-background-image: assets/logo-am.png
+  data-background-size: 400px
+  data-background-position: center 12%
+---
+
+# 🎯 Abertura {background-color="#1c2d4f"}
+
+## A aula de fechamento
+
+:::: {.columns}
+::: {.column width="58%"}
+Chegamos à **quarta e última aula**. Nos três encontros anteriores nós: (1) vimos
+**que problemas a IA resolve**; (2) organizamos isso na **metodologia CRISP-DM aplicada a
+agentes**; e (3) reconstruímos **ao vivo** o projeto **Sentimento COPOM** com o Claude Code.
+
+Hoje **amarramos tudo**: revisamos o método, montamos o **ambiente de trabalho** do zero e
+construímos um **projeto-exemplo de automação** — um relatório semanal que chega no
+**WhatsApp**.
+:::
+::: {.column width="42%"}
+![](assets/illus-linechart.svg)
+:::
+::::
+
+::: notes
+Projeto-base citado: Sentimento COPOM (portfólio da Análise Macro). A ideia desta aula é
+consolidar por repetição e deixar o aluno pronto para o trabalho final.
+:::
+
+## O que você sai sabendo fazer
+
+- Enxergar **qualquer projeto de IA** pelo mapa do **CRISP-DM aplicado a agentes**
+- Montar o ambiente: **VS Code + Python + Claude Code + Quarto + LaTeX**
+- Dirigir o Claude Code no ciclo **explore → plan → code → commit**
+- Construir uma **automação ponta a ponta**: dados → resumo com LLM → **WhatsApp**
+- Entender o que se espera do **trabalho final** da disciplina
+
+## Agenda da aula {.smaller}
+
+| Bloco | Tema | ~min |
+|---|---|---:|
+| 0 | Abertura | 5 |
+| 1 | **CRISP-DM aplicada a agentes de IA** (revisão via COPOM) | 25 |
+| 2 | **Setup**: VS Code, Python, Claude Code, Quarto + LaTeX | 30 |
+| 3 | **Projeto-exemplo**: relatório semanal no WhatsApp | 35 |
+| 4 | Trabalho final e fechamento | 15 |
+
+## Como vamos trabalhar {.smaller}
+
+- Cada etapa prática tem uma **caixa de PROMPT** — você cola no Claude Code e revisa o que ele faz
+- Trabalhamos no ciclo **explore → plan → code → commit**, igual ao COPOM
+- O agente escreve o código; **você decide, valida e questiona**
+
+::: {.callout-important}
+## Regra de ouro
+**Nunca inventar número.** Todo valor citado vem de uma célula que roda. Se um número não
+veio de algo executado, ele não entra no relatório, no paper ou na apresentação.
+:::
+
+# 🧠 Parte 1 — CRISP-DM com agentes {background-color="#1c2d4f"}
+
+## De onde viemos: o projeto COPOM {.smaller}
+
+:::: {.columns}
+::: {.column width="58%"}
+No Encontro 3 reconstruímos, prompt a prompt, um **Índice de Tom das atas do Copom**:
+
+- Coletamos atas da **API do BCB** e a meta **Selic** (SGS 432)
+- Pontuamos o tom com **3 LLMs em paralelo** (Gemini, Claude, GPT) + baseline léxico
+- **Calibramos** o score em pontos da Selic (OLS) e **validamos em 3 camadas**
+- Entregamos como **paper Quarto** reprodutível e versionado
+:::
+::: {.column width="42%"}
+![](assets/illus-chat.svg)
+:::
+::::
+
+::: {.callout-note}
+A lição não foi "decorar o resultado" — foi **dirigir o agente** ao longo de um pipeline de
+ciência de dados completo. Esse é o método que se repete em **qualquer** projeto.
+:::
+
+## CRISP-DM: o mapa de todo projeto {.smaller}
+
+| Fase | O que significa | No projeto COPOM |
+|---|---|---|
+| **Entendimento do Negócio** | Qual o problema e o valor? | Medir o tom das atas em escala comparável à Selic |
+| **Entendimento dos Dados** | Que fontes existem? | Atas (API BCB) + meta Selic (SGS 432) |
+| **Preparação** | Limpar e extrair sinal | Limpeza HTML, seções A+B, alinhamento ata × Selic |
+| **Modelagem** | Como resolver? | Prompt único, saída Pydantic, 3 LLMs, OLS |
+| **Avaliação** | Funciona mesmo? | In-sample, holdout, walk-forward |
+| **Implantação** | Como entrega valor? | Pipeline Quarto, cache, releases versionadas |
+
+## O ciclo, fase a fase (1/2)
+
+- **Entendimento do Negócio** — você traduz o problema num objetivo mensurável e num
+  `CLAUDE.md`. *O agente não decide o problema; você decide.*
+- **Entendimento dos Dados** — mapeia fontes (APIs, bancos, PDFs), volume, qualidade e
+  **custo de tokens**. *O agente explora e documenta o que encontrou.*
+- **Preparação** — limpeza, extração de sinal, recorte de tokens. *Aqui o agente é rápido
+  e incansável; você traz a hipótese de onde está o sinal.*
+
+## O ciclo, fase a fase (2/2)
+
+- **Modelagem** — prompts, **saída estruturada (Pydantic)**, escolha de LLM, ML clássico
+  quando cabe. *Schema fixo = resultados comparáveis.*
+- **Avaliação** — validar em **camadas**, nunca confiar num número só. *In-sample não
+  basta; teste fora da amostra.*
+- **Implantação** — empacotar como produto reprodutível, versionado e **automatizado**.
+  *É a Parte 3 de hoje: a entrega que roda sozinha toda semana.*
+
+## Onde o Claude Code entra
+
+- Ele **escreve** os coletores, os schemas, os prompts, a análise e os gráficos
+- Ele **roda** o pipeline, lê os erros das APIs e corrige os *retries*
+- Ele **monta** o documento Quarto, as tabelas e o versionamento
+- **Você** define o método, lê criticamente os números e segura a regra de ouro
+
+::: {.callout-tip}
+Pense no agente como um **assistente de pesquisa sênior**: rápido, incansável e literal.
+A direção é sua.
+:::
+
+## Regras de ouro (gravar) {.smaller}
+
+- **Nunca inventar número** — todo valor vem de uma execução real
+- **Saída estruturada** — comparabilidade só existe com schema fixo (Pydantic)
+- **Segredos no `.env`** — chaves nunca no código nem no git
+- **Validar em camadas** — uma métrica só engana
+- **`explore → plan → code → commit`** — sempre nessa ordem
+
+# ⚙️ Parte 2 — Setup do ambiente {background-color="#1c2d4f"}
+
+## A meta do setup
+
+:::: {.columns}
+::: {.column width="58%"}
+Sair desta parte com um ambiente onde você:
+
+- Edita código no **VS Code**
+- Roda **Python** num ambiente isolado (`.venv`)
+- Dirige o **Claude Code dentro do VS Code**
+- Gera relatórios reprodutíveis em **HTML e PDF** com **Quarto + LaTeX**
+:::
+::: {.column width="42%"}
+![](assets/illus-terminal.svg)
+:::
+::::
+
+::: {.callout-note}
+É o mesmo ambiente que usamos no COPOM. Monte uma vez; serve para o resto da disciplina e
+para o trabalho final.
+:::
+
+## Passo 1 — Instalar o VS Code {.smaller}
+
+- Baixe em **[code.visualstudio.com](https://code.visualstudio.com)** (Windows, macOS, Linux)
+- Instale a extensão oficial **Python** (Microsoft) na aba *Extensions* (`Ctrl/Cmd+Shift+X`)
+- Recomendado: extensão **Quarto** (renderiza e dá preview dos `.qmd` dentro do editor)
+
+::: {.callout-tip}
+No macOS, ative o comando `code` no terminal: abra o VS Code → `Cmd+Shift+P` →
+*"Shell Command: Install 'code' command in PATH"*.
+:::
+
+## Passo 2 — Instalar o Python {.smaller}
+
+- Baixe o Python **≥ 3.10** em **[python.org/downloads](https://www.python.org/downloads/)**
+  (no Windows, marque **"Add Python to PATH"**)
+- Crie um **ambiente virtual** por projeto e ative:
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate      # Windows: .venv\Scripts\activate
+python -m pip install --upgrade pip
+```
+
+::: {.callout-important}
+Um `.venv` por projeto isola as dependências. No VS Code, selecione o interpretador do
+`.venv`: `Ctrl/Cmd+Shift+P` → *"Python: Select Interpreter"*.
+:::
+
+## Passo 3 — Claude Code no VS Code {.smaller}
+
+1. Instale a extensão **Claude Code** (Anthropic) na aba *Extensions* do VS Code
+2. Faça login com sua conta Anthropic (ou configure a `ANTHROPIC_API_KEY`)
+3. Abra o painel do Claude Code (ícone na barra lateral) — ele enxerga os arquivos abertos,
+   o terminal e o diff do editor
+
+::: {.callout-tip}
+Alternativa por terminal: `npm install -g @anthropic-ai/claude-code` e rode `claude` na
+pasta do projeto. A extensão e o CLI compartilham o mesmo agente.
+:::
+
+## Passo 4 — Quarto + LaTeX {.smaller}
+
+- **Quarto**: baixe em **[quarto.org/docs/get-started](https://quarto.org/docs/get-started/)**.
+  Gera slides (reveal.js), relatórios HTML, **PDF** e dashboards a partir de `.qmd`.
+- **LaTeX** (para saída PDF): a forma mais simples é o **TinyTeX**, instalado pelo próprio Quarto:
+
+```bash
+quarto install tinytex
+quarto --version
+```
+
+::: {.callout-note}
+Quarto roda células **Python** (via Jupyter) e injeta os resultados no documento — é assim
+que a **regra de ouro** vira engenharia: o número nasce do código que rodou.
+:::
+
+## Conferindo o ambiente {.smaller}
+
+```bash
+code --version       # VS Code (CLI)
+python --version     # >= 3.10
+quarto --version     # >= 1.4
+quarto check         # diagnóstico completo (Python, Jupyter, LaTeX)
+```
+
+. . .
+
+E o ciclo completo de uma entrega reprodutível:
+
+```bash
+quarto preview meu_relatorio.qmd   # preview ao vivo
+quarto render meu_relatorio.qmd --to html
+quarto render meu_relatorio.qmd --to pdf
+```
+
+## Fundação do projeto (deixe o agente montar) {.smaller}
+
+::: {.prompt}
+```text
+Estou começando um projeto Python nesta pasta, no VS Code com Claude Code.
+Crie a fundação:
+1. Um CLAUDE.md com o briefing: objetivo do projeto, fontes de dados, a
+   metodologia CRISP-DM e a REGRA DE OURO (nunca inventar número: todo valor
+   vem de código que roda).
+2. Um .gitignore para Python/Quarto (.venv/, .quarto/, *_files/, .env,
+   __pycache__/, *.pyc).
+3. Um requirements.txt (vazio por enquanto) e um .env.example para as chaves.
+4. Explique como criar o .venv, ativar e selecionar o interpretador no VS Code.
+Me mostre a árvore de arquivos no final.
+```
+:::
+
+::: {.callout-important}
+Chaves de API ficam **só** no `.env` (que está no `.gitignore`) e são lidas por variável de
+ambiente. Peça isso explicitamente ao agente.
+:::
+
+# 🤖 Parte 3 — Relatório semanal no WhatsApp {background-color="#1c2d4f"}
+
+## A ideia: um digest que chega sozinho
+
+:::: {.columns}
+::: {.column width="58%"}
+Vamos construir uma automação que, **toda semana**, sozinha:
+
+1. **Coleta** dados de uma fonte (API, planilha, banco)
+2. **Resume** com um LLM, em linguagem de negócio
+3. **Envia** o resumo pelo **WhatsApp** para quem precisa decidir
+
+É o **digest semanal**: a fase de **Implantação** do CRISP-DM virando produto.
+:::
+::: {.column width="42%"}
+![](assets/illus-network.svg)
+:::
+::::
+
+::: {.callout-note}
+O pipeline é **genérico e configurável**: troque a fonte de dados e o prompt, e o mesmo
+esqueleto serve para finanças, vendas, operação ou suporte.
+:::
+
+## CRISP-DM neste projeto {.smaller}
+
+| Fase | Neste projeto |
+|---|---|
+| **Negócio** | "Quero um resumo executivo semanal sem abrir 5 sistemas" |
+| **Dados** | Uma fonte qualquer via API (ex.: indicadores, vendas, tickets) |
+| **Preparação** | Selecionar o recorte da semana; cortar ruído e tokens |
+| **Modelagem** | Prompt de resumo + **saída estruturada** (título, bullets, alerta) |
+| **Avaliação** | Conferir factualidade; o LLM resume, **não inventa** números |
+| **Implantação** | Envio no **WhatsApp** + **agendamento semanal** (cron / Actions) |
+
+::: {.callout-tip}
+Repare: é **a mesma metodologia da Parte 1**. Mudou o domínio, não o mapa.
+:::
+
+## O pipeline em quatro módulos
+
+1. **`coleta.py`** — busca os dados da semana na fonte escolhida (API pública, CSV, banco)
+2. **`resumo.py`** — manda os dados ao LLM e recebe um resumo **estruturado**
+3. **`whatsapp.py`** — envia o texto pela **Meta WhatsApp Cloud API**
+4. **`main.py`** — orquestra os três e é o que o agendador chama toda semana
+
+. . .
+
+::: {.callout-note}
+Cada módulo vira **um ou mais prompts** para o Claude Code. O agente escreve; você confere
+o método e a factualidade.
+:::
+
+## Bloco 1 — Coleta dos dados da semana {.smaller}
+
+::: {.prompt}
+```text
+Crie coleta.py com uma função coletar_semana() que busca os dados da última
+semana na fonte do projeto (comece com uma API pública à sua escolha; deixe a
+URL e os parâmetros no topo, fáceis de trocar).
+
+- use requests com Retry e backoff exponencial;
+- filtre apenas o período dos últimos 7 dias;
+- retorne um dict/DataFrame limpo e pequeno (corte colunas inúteis para
+  economizar tokens);
+- comente em português e trate erro de rede sem derrubar o programa.
+```
+:::
+
+## Bloco 2 — Resumo com LLM (saída estruturada) {.smaller}
+
+::: {.prompt}
+```text
+Crie resumo.py. Defina um schema Pydantic RelatorioSemanal com:
+- titulo (str), bullets (list[str], 3 a 5 itens), alerta (str | None),
+  numero_destaque (str).
+
+Use a API da Anthropic (claude-haiku-4-5, temperature=0) com saída estruturada
+para preencher esse schema a partir dos dados de coleta.py. No prompt do sistema:
+persona de analista de negócios; resumir em português, linguagem executiva;
+REGRA DE OURO: usar SOMENTE números presentes nos dados — nunca inventar.
+Leia a ANTHROPIC_API_KEY do ambiente (.env).
+```
+:::
+
+::: {.callout-tip}
+**Saída estruturada** é o que torna o resumo confiável e formatável: sempre os mesmos
+campos, prontos para virar a mensagem do WhatsApp.
+:::
+
+## WhatsApp Cloud API — onde pegar as credenciais {.smaller}
+
+| Passo | Onde | O que você obtém |
+|---|---|---|
+| Criar app | [developers.facebook.com](https://developers.facebook.com) → *My Apps → Create App* (tipo **Business**) | App ID |
+| Adicionar produto | No app → adicionar **WhatsApp** | número de teste + *Phone number ID* |
+| Token | *WhatsApp → API Setup* | **token de acesso** (temporário p/ testar) |
+| Destinatário | *API Setup* → adicionar seu número | número que **recebe** o teste |
+
+::: {.callout-important}
+O token inicial é **temporário** (≈ 24 h). Para produção, gere um **token permanente** via
+*System User* no **Business Manager**. Tudo vai para o `.env`.
+:::
+
+## Bloco 3 — Enviar pelo WhatsApp {.smaller}
+
+::: {.prompt}
+```text
+Crie whatsapp.py com enviar_mensagem(texto) que usa a Meta WhatsApp Cloud API
+(Graph API). Leia do .env: WHATSAPP_TOKEN, WHATSAPP_PHONE_NUMBER_ID e
+WHATSAPP_DESTINO. Faça POST em
+https://graph.facebook.com/v21.0/{PHONE_NUMBER_ID}/messages
+com um corpo de mensagem de texto. Trate o caso da janela de 24h: se o envio de
+texto livre falhar, caia para um template aprovado (ex.: hello_world). Levante
+erro claro se o status != 200 e comente em português.
+```
+:::
+
+```python
+# trecho do corpo enviado (mensagem de texto livre)
+payload = {
+    "messaging_product": "whatsapp",
+    "to": destino,
+    "type": "text",
+    "text": {"body": texto},
+}
+```
+
+## Bloco 4 — Orquestrar e formatar {.smaller}
+
+::: {.prompt}
+```text
+Crie main.py que: (1) chama coletar_semana(); (2) gera o RelatorioSemanal com
+resumo.py; (3) formata uma mensagem de WhatsApp legível a partir do schema
+(título em negrito com *asteriscos*, bullets com "• ", e o alerta no fim se
+existir); (4) envia com whatsapp.py. Logue cada etapa em português e não envie
+nada se a coleta vier vazia.
+```
+:::
+
+::: {.callout-note}
+A formatação sai **do schema**, não de texto solto. Negrito no WhatsApp usa `*asteriscos*`.
+:::
+
+## Bloco 5 — Agendar para toda semana {.smaller}
+
+::: {.prompt}
+```text
+Quero rodar o main.py toda segunda às 8h. Me dê DUAS opções e os arquivos:
+1. GitHub Actions: um workflow .github/workflows/semanal.yml com schedule cron
+   "0 11 * * 1" (UTC), que instala as deps, injeta as chaves via secrets do
+   repositório e roda python main.py.
+2. cron local (macOS/Linux): a linha de crontab equivalente, ativando o .venv.
+Explique os prós de cada um e como cadastrar os secrets no GitHub.
+```
+:::
+
+::: {.callout-tip}
+**GitHub Actions** é o caminho "sem servidor": roda na nuvem, lê as chaves dos *secrets* do
+repositório e não depende da sua máquina estar ligada.
+```text
+0 11 * * 1   # toda segunda, 11h UTC (8h em Brasília)
+```
+:::
+
+## O resultado {.smaller}
+
+- Um único `python main.py` faz **dados → resumo → WhatsApp**
+- O agendador dispara **toda semana**, sem você abrir nada
+- O LLM escreve em **linguagem de negócio**, com **números só dos dados**
+- O esqueleto é **reaproveitável**: troque a fonte e o prompt e ele serve a outro setor
+
+::: {.callout-note}
+## O projeto completo
+O skeleton auditável vive em `projeto-exemplo/` neste repositório: `coleta.py`, `resumo.py`,
+`whatsapp.py`, `main.py`, `requirements.txt`, `.env.example` e o `CLAUDE.md`.
+:::
+
+# ✅ Fechamento {background-color="#1c2d4f"}
+
+## Recapitulando a aula {.smaller}
+
+:::: {.columns}
+::: {.column width="55%"}
+1. **CRISP-DM com agentes** — o mesmo mapa em todo projeto, do COPOM ao digest
+2. **Setup** — VS Code + Python + Claude Code + Quarto + LaTeX, montado uma vez
+3. **Automação** — dados → resumo com LLM → **WhatsApp**, rodando toda semana
+:::
+::: {.column width="45%"}
+![](assets/illus-bars.svg)
+:::
+::::
+
+::: {.callout-tip}
+A disciplina inteira cabe numa frase: **dirigir um agente para transformar um problema de
+negócio em um produto reprodutível e automatizado.**
+:::
+
+## O trabalho final {.smaller}
+
+> Aplicar a metodologia **CRISP-DM** a um **problema qualquer** que possa ser resolvido com
+> IA e **consulta de modelos LLM via API**.
+
+- Escolha um problema com **valor de negócio** claro
+- Percorra as **seis fases** do CRISP-DM, dirigindo o Claude Code
+- Use **pelo menos um LLM via API** com **saída estruturada**
+- Entregue **código reprodutível** + uma **apresentação** para stakeholders
+
+. . .
+
+::: {.callout-important}
+Enunciado completo, entregáveis e **rubrica de avaliação** no arquivo `trabalho-final.md`
+deste repositório.
+:::
+
+## Regras de ouro (de novo, de propósito)
+
+- **Nunca inventar número** — todo valor vem de algo que rodou
+- **Saída estruturada** — schema fixo = resultado confiável
+- **Segredos no `.env`** — nunca no código, nunca no git
+- **Validar em camadas** — uma métrica só engana
+- **`explore → plan → code → commit`**
+
+. . .
+
+**Obrigado!** — Análise Macro

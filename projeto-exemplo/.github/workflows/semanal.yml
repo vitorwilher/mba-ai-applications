@@ -1,0 +1,32 @@
+name: Relatório semanal no WhatsApp
+
+# Roda toda segunda às 11h UTC (8h em Brasília). Ajuste o cron se precisar.
+on:
+  schedule:
+    - cron: "0 11 * * 1"
+  workflow_dispatch: {}   # permite rodar manualmente pela aba Actions
+
+jobs:
+  enviar:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: projeto-exemplo
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Instalar dependências
+        run: pip install -r requirements.txt
+
+      - name: Rodar o relatório
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          WHATSAPP_TOKEN: ${{ secrets.WHATSAPP_TOKEN }}
+          WHATSAPP_PHONE_NUMBER_ID: ${{ secrets.WHATSAPP_PHONE_NUMBER_ID }}
+          WHATSAPP_DESTINO: ${{ secrets.WHATSAPP_DESTINO }}
+          FONTE_URL: ${{ secrets.FONTE_URL }}
+        run: python main.py

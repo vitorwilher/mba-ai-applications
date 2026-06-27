@@ -1,0 +1,5 @@
+# Projeto-exemplo: relatório semanal no WhatsApp
+anthropic>=0.40.0      # LLM via API (saída estruturada)
+pydantic>=2.0          # schema do relatório
+requests>=2.31         # coleta de dados e envio Cloud API
+python-dotenv>=1.0     # carregar o .env localmente

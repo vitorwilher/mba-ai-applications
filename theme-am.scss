@@ -1,0 +1,156 @@
+/*-- scss:defaults --*/
+
+// Paleta Análise Macro
+$am-navy:      #1c2d4f;   // azul-marinho da marca
+$am-blue:      #18a0d7;   // azul/ciano da marca
+$am-blue-soft: #56c2ec;   // azul claro de apoio
+$am-ink:       #16233d;   // texto escuro
+$am-bg:        #ffffff;
+$am-bg-soft:   #f3f7fb;   // fundo de seções claras
+
+// Tipografia
+$font-family-sans-serif: "Inter", "Helvetica Neue", "Segoe UI", Arial, sans-serif;
+$presentation-font-size-root: 30px;
+
+// Cores base do reveal
+$body-bg: $am-bg;
+$body-color: $am-ink;
+$link-color: $am-blue;
+$link-color-hover: $am-navy;
+$selection-bg: $am-blue-soft;
+
+// Títulos
+$presentation-heading-color: $am-navy;
+$presentation-heading-font-weight: 700;
+
+/*-- scss:rules --*/
+
+.reveal { letter-spacing: -0.01em; }
+
+// ---- Cabeçalhos (slides de conteúdo) ----
+.reveal h2 {
+  color: $am-navy;
+  border-bottom: 4px solid $am-blue;
+  padding-bottom: 0.25em;
+  margin-bottom: 0.6em;
+}
+.reveal h3 { color: $am-blue; }
+
+// ---- Slides de seção (H1 com background escuro) ----
+.reveal section.has-dark-background h1 {
+  color: #fff;
+  font-size: 2.1em;
+  border-left: 10px solid $am-blue;
+  padding-left: 0.4em;
+  line-height: 1.1;
+}
+.reveal .has-dark-background,
+.reveal .has-dark-background h1,
+.reveal .has-dark-background h2,
+.reveal .has-dark-background p { color: #fff; }
+
+// ---- Listas ----
+.reveal ul li::marker { color: $am-blue; }
+.reveal ol li::marker { color: $am-blue; font-weight: 700; }
+.reveal li { margin-bottom: 0.25em; }
+
+.reveal strong { color: $am-navy; }
+.reveal em { color: $am-blue; font-style: normal; font-weight: 600; }
+
+// ---- Tabelas ----
+.reveal table th {
+  background: $am-navy;
+  color: #fff;
+  border: none;
+}
+.reveal table tr:nth-child(even) td { background: $am-bg-soft; }
+.reveal table td { border-color: #dbe6f0; }
+
+// ---- Blocos de código ----
+.reveal pre code { border-radius: 8px; }
+.reveal code { color: $am-navy; }
+
+// ---- Caixa de PROMPT (texto colável no Claude Code) ----
+.reveal .prompt {
+  border-left: 10px solid $am-blue;
+  background: rgba(24, 160, 215, 0.08);
+  border-radius: 10px;
+  padding: 0.2em 1em 0.5em;
+  margin: 0.3em 0;
+}
+.reveal .prompt::before {
+  content: "PROMPT — cole no Claude Code";
+  display: block;
+  font-size: 0.42em;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  color: $am-blue;
+  margin: 0.5em 0 0.2em;
+}
+.reveal .prompt pre {
+  background: transparent;
+  box-shadow: none;
+  border: none;
+  margin: 0;
+  width: 100%;
+}
+.reveal .prompt pre code {
+  font-size: 0.9em;
+  line-height: 1.5;
+  color: $am-ink;
+}
+// Não deixar o .smaller encolher os prompts
+.reveal .smaller .prompt pre code { font-size: 0.84em; }
+
+// ---- Callouts mais vivos ----
+.reveal .callout { border-radius: 10px; }
+.reveal .callout.callout-style-default .callout-title { font-weight: 700; }
+.reveal .callout-tip { border-left-color: $am-blue !important; }
+.reveal .callout-note { border-left-color: $am-navy !important; }
+
+// ---- Número da página: canto SUPERIOR direito ----
+.reveal .slide-number {
+  top: 14px !important;
+  right: 18px !important;
+  bottom: auto !important;
+  left: auto !important;
+  background-color: $am-navy !important;
+  color: #fff !important;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.42em;
+  font-weight: 600;
+}
+.reveal .slide-number a { color: #fff !important; }
+
+// ---- Logo no canto inferior direito ----
+.reveal .slide-logo {
+  height: 130px !important;
+  max-height: 130px !important;
+  width: auto !important;
+  max-width: none !important;
+  right: 24px !important;
+  bottom: 18px !important;
+  opacity: 0.97;
+}
+
+// Em slides escuros (dividers), a logo colorida ficaria invisível:
+// recolore para branco automaticamente.
+.reveal.has-dark-background .slide-logo,
+.reveal-viewport.has-dark-background .slide-logo {
+  filter: brightness(0) invert(1);
+  opacity: 0.92;
+}
+
+// ---- Slide de título ----
+#title-slide .title {
+  color: $am-navy;
+  font-weight: 800;
+}
+#title-slide .subtitle {
+  color: $am-blue;
+  font-weight: 600;
+}
+#title-slide .author, #title-slide .quarto-title-authors {
+  color: $am-ink;
+}

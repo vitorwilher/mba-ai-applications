@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 280" role="img" aria-label="Balões de conversa">
+  <rect x="0" y="0" width="400" height="280" rx="16" fill="#f3f7fb"/>
+  <!-- balão usuário -->
+  <g>
+    <rect x="40" y="56" width="220" height="64" rx="16" fill="#1c2d4f"/>
+    <path d="M64 120 L64 144 L92 120 Z" fill="#1c2d4f"/>
+    <rect x="62" y="74" width="150" height="9" rx="4.5" fill="#56c2ec"/>
+    <rect x="62" y="94" width="110" height="9" rx="4.5" fill="#7f93ad"/>
+  </g>
+  <!-- balão Claude -->
+  <g>
+    <rect x="140" y="156" width="220" height="78" rx="16" fill="#18a0d7"/>
+    <path d="M336 234 L336 258 L308 234 Z" fill="#18a0d7"/>
+    <rect x="162" y="176" width="176" height="9" rx="4.5" fill="#ffffff"/>
+    <rect x="162" y="196" width="150" height="9" rx="4.5" fill="#dff1fb"/>
+    <rect x="162" y="216" width="120" height="9" rx="4.5" fill="#dff1fb"/>
+  </g>
+</svg>

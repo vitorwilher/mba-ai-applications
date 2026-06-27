@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 280" role="img" aria-label="Gráfico de linha de série temporal">
+  <defs>
+    <linearGradient id="lc" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#56c2ec" stop-opacity="0.55"/>
+      <stop offset="100%" stop-color="#56c2ec" stop-opacity="0.05"/>
+    </linearGradient>
+  </defs>
+  <rect x="0" y="0" width="400" height="280" rx="16" fill="#f3f7fb"/>
+  <!-- eixos -->
+  <line x1="48" y1="40" x2="48" y2="232" stroke="#c4d3e2" stroke-width="2"/>
+  <line x1="48" y1="232" x2="364" y2="232" stroke="#c4d3e2" stroke-width="2"/>
+  <!-- grade -->
+  <line x1="48" y1="180" x2="364" y2="180" stroke="#e1e9f1" stroke-width="1"/>
+  <line x1="48" y1="128" x2="364" y2="128" stroke="#e1e9f1" stroke-width="1"/>
+  <line x1="48" y1="76" x2="364" y2="76" stroke="#e1e9f1" stroke-width="1"/>
+  <!-- área -->
+  <path d="M48 200 L96 188 L144 196 L192 150 L240 158 L288 110 L336 70 L336 232 L48 232 Z" fill="url(#lc)"/>
+  <!-- linha -->
+  <path d="M48 200 L96 188 L144 196 L192 150 L240 158 L288 110 L336 70" fill="none" stroke="#18a0d7" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- pontos -->
+  <g fill="#1c2d4f">
+    <circle cx="48" cy="200" r="5"/><circle cx="96" cy="188" r="5"/><circle cx="144" cy="196" r="5"/>
+    <circle cx="192" cy="150" r="5"/><circle cx="240" cy="158" r="5"/><circle cx="288" cy="110" r="5"/>
+  </g>
+  <circle cx="336" cy="70" r="7" fill="#18a0d7" stroke="#fff" stroke-width="3"/>
+</svg>

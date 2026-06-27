@@ -1,0 +1,17 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+
+# Quarto
+.quarto/
+/.quarto/
+*_files/
+
+# Segredos — NUNCA versionar
+.env
+
+# macOS
+.DS_Store
+
+**/*.quarto_ipynb

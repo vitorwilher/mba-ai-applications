@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 280" role="img" aria-label="Nós conectados representando integração de ferramentas">
+  <rect x="0" y="0" width="400" height="280" rx="16" fill="#f3f7fb"/>
+  <g stroke="#9bc4e0" stroke-width="3">
+    <line x1="200" y1="140" x2="92"  y2="72"/>
+    <line x1="200" y1="140" x2="320" y2="80"/>
+    <line x1="200" y1="140" x2="80"  y2="210"/>
+    <line x1="200" y1="140" x2="312" y2="206"/>
+  </g>
+  <!-- nó central -->
+  <circle cx="200" cy="140" r="34" fill="#1c2d4f"/>
+  <circle cx="200" cy="140" r="14" fill="#56c2ec"/>
+  <!-- nós satélites -->
+  <g fill="#18a0d7">
+    <circle cx="92"  cy="72"  r="20"/>
+    <circle cx="320" cy="80"  r="20"/>
+    <circle cx="80"  cy="210" r="20"/>
+    <circle cx="312" cy="206" r="20"/>
+  </g>
+</svg>

@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 280" role="img" aria-label="Janela de terminal">
+  <rect x="0" y="0" width="400" height="280" rx="16" fill="#f3f7fb"/>
+  <rect x="40" y="46" width="320" height="188" rx="12" fill="#1c2d4f"/>
+  <rect x="40" y="46" width="320" height="34" rx="12" fill="#16233d"/>
+  <g>
+    <circle cx="62" cy="63" r="6" fill="#ff5f56"/>
+    <circle cx="84" cy="63" r="6" fill="#ffbd2e"/>
+    <circle cx="106" cy="63" r="6" fill="#27c93f"/>
+  </g>
+  <g font-family="monospace" font-size="15">
+    <text x="60" y="116" fill="#56c2ec">$ claude</text>
+    <text x="60" y="146" fill="#ffffff">&gt; analise a série do IPCA</text>
+    <text x="60" y="176" fill="#9bc4e0">  ↳ lendo dados/ipca.csv ...</text>
+    <text x="60" y="206" fill="#27c93f">  ✓ gráfico gerado</text>
+  </g>
+</svg>
