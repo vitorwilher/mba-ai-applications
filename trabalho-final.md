@@ -47,8 +47,10 @@ valor** de forma reprodutível.
    - `CLAUDE.md` com o briefing do projeto e a regra de ouro;
    - código reprodutível (`requirements.txt`, instruções de `.venv`, `.env.example`);
    - `README.md` explicando como rodar do zero.
-2. **Relatório técnico** em **Quarto** (HTML ou PDF) percorrendo as seis fases do CRISP-DM,
-   com os números gerados por código (nenhum digitado à mão).
+2. **Relatório técnico** em **Quarto + LaTeX (PDF)** percorrendo as seis fases do CRISP-DM,
+   com os números gerados por código (nenhum digitado à mão). **Use a skill
+   [`skill-paper-am/`](skill-paper-am/)**: o `template/paper.qmd` já traz a capa, o cabeçalho
+   LaTeX e a estrutura; veja o paper renderizado em `skill-paper-am/exemplo/paper-exemplo.pdf`.
 3. **Apresentação para stakeholders** (~10 min): slides no estilo executivo — problema,
    solução, resultado, valor e próximos passos.
 

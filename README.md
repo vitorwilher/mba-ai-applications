@@ -25,6 +25,7 @@ Ela cobre, em três partes:
 | [`ementa.md`](ementa.md) | Ementa completa da disciplina (4 encontros) |
 | [`index.qmd`](index.qmd) | Fonte da apresentação da Aula 4 |
 | [`trabalho-final.md`](trabalho-final.md) | Enunciado e rubrica do trabalho final |
+| [`skill-paper-am/`](skill-paper-am/) | Skill do Claude Code: template de paper Quarto+LaTeX + paper de exemplo |
 | [`projeto-exemplo/`](projeto-exemplo/) | Skeleton: relatório semanal → WhatsApp Cloud API |
 | [`CLAUDE.md`](CLAUDE.md) | Briefing do repositório para o Claude Code |
 

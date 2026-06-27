@@ -315,6 +315,63 @@ Chaves de API ficam **só** no `.env` (que está no `.gitignore`) e são lidas p
 ambiente. Peça isso explicitamente ao agente.
 :::
 
+## A entrega: template de paper (skill) {.smaller}
+
+O **relatório técnico** do trabalho final é um **paper Quarto → LaTeX (PDF)** no padrão
+Análise Macro. Você não começa do zero: o repositório traz uma **skill** pronta.
+
+- Copie a pasta `skill-paper-am/` para as skills do seu Claude Code
+  (`.claude/skills/paper-analise-macro/`)
+- Lá dentro: `template/paper.qmd` (esqueleto), `referencias.bib`, a logo e um
+  **paper de exemplo completo e renderável** em `exemplo/`
+
+::: {.prompt}
+```text
+Use a skill paper-analise-macro para montar o paper da minha entrega: copie o
+template, preencha título, autores e resumo, ligue os chunks de Implementação
+aos módulos do meu projeto e renderize em PDF com `quarto render --to pdf`.
+Garanta que todo número exibido sai de um chunk que roda (regra de ouro).
+```
+:::
+
+## ✅ Checklist da aula — tudo que você precisa {.smaller}
+
+:::: {.columns}
+::: {.column width="50%"}
+**Contas**
+
+- [ ] **Claude.ai** (usar o Claude Code)
+- [ ] **GitHub** (versão + Actions)
+- [ ] **Meta for Developers** (WhatsApp)
+- [ ] API: **Anthropic**, **Google**, **OpenAI**
+
+**Ferramentas**
+
+- [ ] **VS Code** + extensões Python e Quarto
+- [ ] **Python ≥ 3.10** + `.venv`
+- [ ] **Claude Code** (extensão no VS Code)
+- [ ] **Quarto** + **LaTeX** (`quarto install tinytex`)
+:::
+::: {.column width="50%"}
+**Segredos**
+
+- [ ] `.env` no `.gitignore`
+- [ ] chaves nos **Secrets** do GitHub (CI)
+
+**Entrega**
+
+- [ ] skill **`skill-paper-am/`** copiada
+- [ ] `CLAUDE.md` com a **regra de ouro**
+- [ ] paper em **PDF** renderizando
+
+**Conferir tudo**
+
+```bash
+quarto check
+```
+:::
+::::
+
 # 🤖 Parte 3 — Relatório semanal no WhatsApp {background-color="#1c2d4f"}
 
 ## A ideia: um digest que chega sozinho
@@ -534,13 +591,13 @@ negócio em um produto reprodutível e automatizado.**
 - Escolha um problema com **valor de negócio** claro
 - Percorra as **seis fases** do CRISP-DM, dirigindo o Claude Code
 - Use **pelo menos um LLM via API** com **saída estruturada**
-- Entregue **código reprodutível** + uma **apresentação** para stakeholders
+- Entregue o **paper em PDF** (skill `skill-paper-am/`) + uma **apresentação** executiva
 
 . . .
 
 ::: {.callout-important}
-Enunciado completo, entregáveis e **rubrica de avaliação** no arquivo `trabalho-final.md`
-deste repositório.
+Enunciado completo, entregáveis e **rubrica de avaliação** no arquivo `trabalho-final.md`.
+O **template e o paper de exemplo** estão em `skill-paper-am/` (Quarto + LaTeX).
 :::
 
 ## Regras de ouro (de novo, de propósito)
