@@ -62,6 +62,26 @@ LaTeX para PDF (qualquer SO):
 quarto install tinytex
 ```
 
+## Passo 1.5 — Conectar ao GitHub
+
+Garanta que o aluno consegue versionar e publicar a partir do VS Code.
+
+1. Instale o **Git** (se faltar) e configure a identidade:
+```bash
+git config --global user.name  "Nome do Aluno"
+git config --global user.email "aluno@email.com"
+```
+
+2. Autentique no GitHub (uma vez), por uma das vias:
+   - **VS Code:** ícone *Accounts* (canto inferior esquerdo) → *Sign in with GitHub*.
+   - **Terminal:** `gh auth login` (GitHub CLI).
+
+3. Verifique:
+```bash
+git --version
+gh auth status   # se usar o GitHub CLI
+```
+
 ## Passo 2 — Fundação do projeto
 
 Copie os arquivos de `template/` para a pasta do projeto do aluno e ajuste o conteúdo:
@@ -81,6 +101,22 @@ pip install -r requirements.txt
 
 No VS Code, selecione o interpretador do `.venv`
 (`Ctrl/Cmd+Shift+P → Python: Select Interpreter`).
+
+## Passo 2.5 — Criar e publicar o repositório
+
+Inicialize o git, faça o primeiro commit e publique no GitHub. Confirme com o aluno se o
+repositório deve ser **público** ou **privado**.
+
+```bash
+git init -b main
+git add -A
+git commit -m "Estrutura inicial do projeto"
+gh repo create <nome-do-repo> --public --source=. --remote=origin --push
+```
+
+Sem o GitHub CLI, oriente o caminho do VS Code: painel **Source Control** →
+*Initialize Repository* → **Commit** → **Publish to GitHub**. Garanta que o `.gitignore`
+já existe (Passo 2) **antes** do primeiro commit, para o `.env` nunca subir.
 
 ## Passo 3 — Conferir tudo
 

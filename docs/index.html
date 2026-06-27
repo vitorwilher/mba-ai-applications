@@ -1589,32 +1589,75 @@ display:block!important;
 </div>
 </div>
 </section>
+<section id="passo-5-conectar-o-vs-code-ao-github" class="slide level2 smaller">
+<h2>Passo 5 — Conectar o VS Code ao GitHub</h2>
+<p>O VS Code já fala Git. Falta <strong>autenticar no GitHub</strong> uma vez:</p>
+<ol type="1">
+<li class="fragment">Instale o <strong>Git</strong> (<a href="https://git-scm.com/downloads">git-scm.com</a>) e configure sua identidade:</li>
+</ol>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href></a><span class="fu">git</span> config <span class="at">--global</span> user.name  <span class="st">&quot;Seu Nome&quot;</span></span>
+<span id="cb5-2"><a href></a><span class="fu">git</span> config <span class="at">--global</span> user.email <span class="st">&quot;voce@email.com&quot;</span></span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+<ol start="2" type="1">
+<li class="fragment">No VS Code, clique no ícone <strong>Accounts</strong> (canto inferior esquerdo) → <em>Sign in with GitHub</em> e autorize no navegador. Pronto: o VS Code passa a <strong>criar repositórios e dar push</strong> por você.</li>
+</ol>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Nota</strong></p>
+</div>
+<div class="callout-content">
+<p>Alternativa por terminal: <code>gh auth login</code> (do GitHub CLI). A extensão e o CLI usam a mesma conta que você criou no Passo 0.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="passo-5-criar-e-montar-o-repositório" class="slide level2 smaller">
+<h2>Passo 5 — Criar e montar o repositório</h2>
+<p>Com a conta conectada, criar o repositório da disciplina é <strong>um clique</strong>:</p>
+<ol type="1">
+<li class="fragment">Abra a pasta do projeto no VS Code (<em>File → Open Folder</em>)</li>
+<li class="fragment">Painel <strong>Source Control</strong> (<code>Ctrl/Cmd+Shift+G</code>) → <em>Initialize Repository</em></li>
+<li class="fragment">Escreva uma mensagem, <strong>Commit</strong>, e clique em <strong>Publish to GitHub</strong> (escolha público/privado)</li>
+</ol>
+<div class="fragment">
+<p>Ou deixe o <strong>Claude Code</strong> montar tudo:</p>
+<div class="prompt">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb6-1"><a href></a>Inicialize um repositório git nesta pasta, crie a estrutura da disciplina</span>
+<span id="cb6-2"><a href></a>(README.md, CLAUDE.md, .gitignore, pasta do projeto), faça o primeiro commit e</span>
+<span id="cb6-3"><a href></a>publique no meu GitHub como repositório público com `gh repo create`. Me mostre</span>
+<span id="cb6-4"><a href></a>a URL do repositório no final.</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</section>
 <section id="conferindo-o-ambiente" class="slide level2 smaller">
 <h2>Conferindo o ambiente</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href></a><span class="ex">code</span> <span class="at">--version</span>       <span class="co"># VS Code (CLI)</span></span>
-<span id="cb5-2"><a href></a><span class="ex">python</span> <span class="at">--version</span>     <span class="co"># &gt;= 3.10</span></span>
-<span id="cb5-3"><a href></a><span class="ex">quarto</span> <span class="at">--version</span>     <span class="co"># &gt;= 1.4</span></span>
-<span id="cb5-4"><a href></a><span class="ex">quarto</span> check         <span class="co"># diagnóstico completo (Python, Jupyter, LaTeX)</span></span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href></a><span class="ex">code</span> <span class="at">--version</span>       <span class="co"># VS Code (CLI)</span></span>
+<span id="cb7-2"><a href></a><span class="ex">python</span> <span class="at">--version</span>     <span class="co"># &gt;= 3.10</span></span>
+<span id="cb7-3"><a href></a><span class="ex">quarto</span> <span class="at">--version</span>     <span class="co"># &gt;= 1.4</span></span>
+<span id="cb7-4"><a href></a><span class="ex">quarto</span> check         <span class="co"># diagnóstico completo (Python, Jupyter, LaTeX)</span></span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="fragment">
 <p>E o ciclo completo de uma entrega reprodutível:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href></a><span class="ex">quarto</span> preview meu_relatorio.qmd   <span class="co"># preview ao vivo</span></span>
-<span id="cb6-2"><a href></a><span class="ex">quarto</span> render meu_relatorio.qmd <span class="at">--to</span> html</span>
-<span id="cb6-3"><a href></a><span class="ex">quarto</span> render meu_relatorio.qmd <span class="at">--to</span> pdf</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href></a><span class="ex">quarto</span> preview meu_relatorio.qmd   <span class="co"># preview ao vivo</span></span>
+<span id="cb8-2"><a href></a><span class="ex">quarto</span> render meu_relatorio.qmd <span class="at">--to</span> html</span>
+<span id="cb8-3"><a href></a><span class="ex">quarto</span> render meu_relatorio.qmd <span class="at">--to</span> pdf</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="fundação-do-projeto-deixe-o-agente-montar" class="slide level2 smaller">
 <h2>Fundação do projeto (deixe o agente montar)</h2>
 <div class="prompt">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb7-1"><a href></a>Estou começando um projeto Python nesta pasta, no VS Code com Claude Code.</span>
-<span id="cb7-2"><a href></a>Crie a fundação:</span>
-<span id="cb7-3"><a href></a>1. Um CLAUDE.md com o briefing: objetivo do projeto, fontes de dados, a</span>
-<span id="cb7-4"><a href></a>   metodologia CRISP-DM e a REGRA DE OURO (nunca inventar número: todo valor</span>
-<span id="cb7-5"><a href></a>   vem de código que roda).</span>
-<span id="cb7-6"><a href></a>2. Um .gitignore para Python/Quarto (.venv/, .quarto/, *_files/, .env,</span>
-<span id="cb7-7"><a href></a>   __pycache__/, *.pyc).</span>
-<span id="cb7-8"><a href></a>3. Um requirements.txt (vazio por enquanto) e um .env.example para as chaves.</span>
-<span id="cb7-9"><a href></a>4. Explique como criar o .venv, ativar e selecionar o interpretador no VS Code.</span>
-<span id="cb7-10"><a href></a>Me mostre a árvore de arquivos no final.</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb9-1"><a href></a>Estou começando um projeto Python nesta pasta, no VS Code com Claude Code.</span>
+<span id="cb9-2"><a href></a>Crie a fundação:</span>
+<span id="cb9-3"><a href></a>1. Um CLAUDE.md com o briefing: objetivo do projeto, fontes de dados, a</span>
+<span id="cb9-4"><a href></a>   metodologia CRISP-DM e a REGRA DE OURO (nunca inventar número: todo valor</span>
+<span id="cb9-5"><a href></a>   vem de código que roda).</span>
+<span id="cb9-6"><a href></a>2. Um .gitignore para Python/Quarto (.venv/, .quarto/, *_files/, .env,</span>
+<span id="cb9-7"><a href></a>   __pycache__/, *.pyc).</span>
+<span id="cb9-8"><a href></a>3. Um requirements.txt (vazio por enquanto) e um .env.example para as chaves.</span>
+<span id="cb9-9"><a href></a>4. Explique como criar o .venv, ativar e selecionar o interpretador no VS Code.</span>
+<span id="cb9-10"><a href></a>Me mostre a árvore de arquivos no final.</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="callout callout-important callout-titled callout-style-default">
 <div class="callout-body">
@@ -1638,10 +1681,10 @@ display:block!important;
 <li class="fragment">Lá dentro: <code>template/paper.qmd</code> (esqueleto), <code>referencias.bib</code>, a logo e um <strong>paper de exemplo completo e renderável</strong> em <code>exemplo/</code></li>
 </ul>
 <div class="prompt">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb8-1"><a href></a>Use a skill paper-analise-macro para montar o paper da minha entrega: copie o</span>
-<span id="cb8-2"><a href></a>template, preencha título, autores e resumo, ligue os chunks de Implementação</span>
-<span id="cb8-3"><a href></a>aos módulos do meu projeto e renderize em PDF com `quarto render --to pdf`.</span>
-<span id="cb8-4"><a href></a>Garanta que todo número exibido sai de um chunk que roda (regra de ouro).</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb10-1"><a href></a>Use a skill paper-analise-macro para montar o paper da minha entrega: copie o</span>
+<span id="cb10-2"><a href></a>template, preencha título, autores e resumo, ligue os chunks de Implementação</span>
+<span id="cb10-3"><a href></a>aos módulos do meu projeto e renderize em PDF com `quarto render --to pdf`.</span>
+<span id="cb10-4"><a href></a>Garanta que todo número exibido sai de um chunk que roda (regra de ouro).</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="checklist-da-aula-tudo-que-você-precisa" class="slide level2 smaller">
@@ -1661,6 +1704,8 @@ display:block!important;
 <li class="fragment"><label><input type="checkbox"><strong>Python ≥ 3.10</strong> + <code>.venv</code></label></li>
 <li class="fragment"><label><input type="checkbox"><strong>Claude Code</strong> (extensão no VS Code)</label></li>
 <li class="fragment"><label><input type="checkbox"><strong>Quarto</strong> + <strong>LaTeX</strong> (<code>quarto install tinytex</code>)</label></li>
+<li class="fragment"><label><input type="checkbox"><strong>Git</strong> + <strong>GitHub</strong> conectado no VS Code</label></li>
+<li class="fragment"><label><input type="checkbox"><strong>Repositório</strong> criado (<em>Publish to GitHub</em>)</label></li>
 </ul>
 </div><div class="column" style="width:50%;">
 <p><strong>Segredos</strong></p>
@@ -1675,7 +1720,7 @@ display:block!important;
 <li class="fragment"><label><input type="checkbox">paper em <strong>PDF</strong> renderizando</label></li>
 </ul>
 <p><strong>Conferir tudo</strong></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href></a><span class="ex">quarto</span> check</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href></a><span class="ex">quarto</span> check</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
 </div></div>
 </section></section>
 <section>
@@ -1792,29 +1837,29 @@ display:block!important;
 <section id="bloco-1-coleta-dos-dados-da-semana" class="slide level2 smaller">
 <h2>Bloco 1 — Coleta dos dados da semana</h2>
 <div class="prompt">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb10-1"><a href></a>Crie coleta.py com uma função coletar_semana() que busca os dados da última</span>
-<span id="cb10-2"><a href></a>semana na fonte do projeto (comece com uma API pública à sua escolha; deixe a</span>
-<span id="cb10-3"><a href></a>URL e os parâmetros no topo, fáceis de trocar).</span>
-<span id="cb10-4"><a href></a></span>
-<span id="cb10-5"><a href></a>- use requests com Retry e backoff exponencial;</span>
-<span id="cb10-6"><a href></a>- filtre apenas o período dos últimos 7 dias;</span>
-<span id="cb10-7"><a href></a>- retorne um dict/DataFrame limpo e pequeno (corte colunas inúteis para</span>
-<span id="cb10-8"><a href></a>  economizar tokens);</span>
-<span id="cb10-9"><a href></a>- comente em português e trate erro de rede sem derrubar o programa.</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb12-1"><a href></a>Crie coleta.py com uma função coletar_semana() que busca os dados da última</span>
+<span id="cb12-2"><a href></a>semana na fonte do projeto (comece com uma API pública à sua escolha; deixe a</span>
+<span id="cb12-3"><a href></a>URL e os parâmetros no topo, fáceis de trocar).</span>
+<span id="cb12-4"><a href></a></span>
+<span id="cb12-5"><a href></a>- use requests com Retry e backoff exponencial;</span>
+<span id="cb12-6"><a href></a>- filtre apenas o período dos últimos 7 dias;</span>
+<span id="cb12-7"><a href></a>- retorne um dict/DataFrame limpo e pequeno (corte colunas inúteis para</span>
+<span id="cb12-8"><a href></a>  economizar tokens);</span>
+<span id="cb12-9"><a href></a>- comente em português e trate erro de rede sem derrubar o programa.</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="bloco-2-resumo-com-llm-saída-estruturada" class="slide level2 smaller">
 <h2>Bloco 2 — Resumo com LLM (saída estruturada)</h2>
 <div class="prompt">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb11-1"><a href></a>Crie resumo.py. Defina um schema Pydantic RelatorioSemanal com:</span>
-<span id="cb11-2"><a href></a>- titulo (str), bullets (list[str], 3 a 5 itens), alerta (str | None),</span>
-<span id="cb11-3"><a href></a>  numero_destaque (str).</span>
-<span id="cb11-4"><a href></a></span>
-<span id="cb11-5"><a href></a>Use a API da Anthropic (claude-haiku-4-5, temperature=0) com saída estruturada</span>
-<span id="cb11-6"><a href></a>para preencher esse schema a partir dos dados de coleta.py. No prompt do sistema:</span>
-<span id="cb11-7"><a href></a>persona de analista de negócios; resumir em português, linguagem executiva;</span>
-<span id="cb11-8"><a href></a>REGRA DE OURO: usar SOMENTE números presentes nos dados — nunca inventar.</span>
-<span id="cb11-9"><a href></a>Leia a ANTHROPIC_API_KEY do ambiente (.env).</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb13-1"><a href></a>Crie resumo.py. Defina um schema Pydantic RelatorioSemanal com:</span>
+<span id="cb13-2"><a href></a>- titulo (str), bullets (list[str], 3 a 5 itens), alerta (str | None),</span>
+<span id="cb13-3"><a href></a>  numero_destaque (str).</span>
+<span id="cb13-4"><a href></a></span>
+<span id="cb13-5"><a href></a>Use a API da Anthropic (claude-haiku-4-5, temperature=0) com saída estruturada</span>
+<span id="cb13-6"><a href></a>para preencher esse schema a partir dos dados de coleta.py. No prompt do sistema:</span>
+<span id="cb13-7"><a href></a>persona de analista de negócios; resumir em português, linguagem executiva;</span>
+<span id="cb13-8"><a href></a>REGRA DE OURO: usar SOMENTE números presentes nos dados — nunca inventar.</span>
+<span id="cb13-9"><a href></a>Leia a ANTHROPIC_API_KEY do ambiente (.env).</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
@@ -1902,30 +1947,30 @@ display:block!important;
 <section id="bloco-3-enviar-pelo-whatsapp" class="slide level2 smaller">
 <h2>Bloco 3 — Enviar pelo WhatsApp</h2>
 <div class="prompt">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb12-1"><a href></a>Crie whatsapp.py com enviar_mensagem(texto) que usa a Meta WhatsApp Cloud API</span>
-<span id="cb12-2"><a href></a>(Graph API). Leia do .env: WHATSAPP_TOKEN, WHATSAPP_PHONE_NUMBER_ID e</span>
-<span id="cb12-3"><a href></a>WHATSAPP_DESTINO. Faça POST em</span>
-<span id="cb12-4"><a href></a>https://graph.facebook.com/v21.0/{PHONE_NUMBER_ID}/messages</span>
-<span id="cb12-5"><a href></a>com um corpo de mensagem de texto. Trate o caso da janela de 24h: se o envio de</span>
-<span id="cb12-6"><a href></a>texto livre falhar, caia para um template aprovado (ex.: hello_world). Levante</span>
-<span id="cb12-7"><a href></a>erro claro se o status != 200 e comente em português.</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb14-1"><a href></a>Crie whatsapp.py com enviar_mensagem(texto) que usa a Meta WhatsApp Cloud API</span>
+<span id="cb14-2"><a href></a>(Graph API). Leia do .env: WHATSAPP_TOKEN, WHATSAPP_PHONE_NUMBER_ID e</span>
+<span id="cb14-3"><a href></a>WHATSAPP_DESTINO. Faça POST em</span>
+<span id="cb14-4"><a href></a>https://graph.facebook.com/v21.0/{PHONE_NUMBER_ID}/messages</span>
+<span id="cb14-5"><a href></a>com um corpo de mensagem de texto. Trate o caso da janela de 24h: se o envio de</span>
+<span id="cb14-6"><a href></a>texto livre falhar, caia para um template aprovado (ex.: hello_world). Levante</span>
+<span id="cb14-7"><a href></a>erro claro se o status != 200 e comente em português.</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href></a><span class="co"># trecho do corpo enviado (mensagem de texto livre)</span></span>
-<span id="cb13-2"><a href></a>payload <span class="op">=</span> {</span>
-<span id="cb13-3"><a href></a>    <span class="st">&quot;messaging_product&quot;</span>: <span class="st">&quot;whatsapp&quot;</span>,</span>
-<span id="cb13-4"><a href></a>    <span class="st">&quot;to&quot;</span>: destino,</span>
-<span id="cb13-5"><a href></a>    <span class="st">&quot;type&quot;</span>: <span class="st">&quot;text&quot;</span>,</span>
-<span id="cb13-6"><a href></a>    <span class="st">&quot;text&quot;</span>: {<span class="st">&quot;body&quot;</span>: texto},</span>
-<span id="cb13-7"><a href></a>}</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href></a><span class="co"># trecho do corpo enviado (mensagem de texto livre)</span></span>
+<span id="cb15-2"><a href></a>payload <span class="op">=</span> {</span>
+<span id="cb15-3"><a href></a>    <span class="st">&quot;messaging_product&quot;</span>: <span class="st">&quot;whatsapp&quot;</span>,</span>
+<span id="cb15-4"><a href></a>    <span class="st">&quot;to&quot;</span>: destino,</span>
+<span id="cb15-5"><a href></a>    <span class="st">&quot;type&quot;</span>: <span class="st">&quot;text&quot;</span>,</span>
+<span id="cb15-6"><a href></a>    <span class="st">&quot;text&quot;</span>: {<span class="st">&quot;body&quot;</span>: texto},</span>
+<span id="cb15-7"><a href></a>}</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="bloco-4-orquestrar-e-formatar" class="slide level2 smaller">
 <h2>Bloco 4 — Orquestrar e formatar</h2>
 <div class="prompt">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb14-1"><a href></a>Crie main.py que: (1) chama coletar_semana(); (2) gera o RelatorioSemanal com</span>
-<span id="cb14-2"><a href></a>resumo.py; (3) formata uma mensagem de WhatsApp legível a partir do schema</span>
-<span id="cb14-3"><a href></a>(título em negrito com *asteriscos*, bullets com &quot;• &quot;, e o alerta no fim se</span>
-<span id="cb14-4"><a href></a>existir); (4) envia com whatsapp.py. Logue cada etapa em português e não envie</span>
-<span id="cb14-5"><a href></a>nada se a coleta vier vazia.</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb16-1"><a href></a>Crie main.py que: (1) chama coletar_semana(); (2) gera o RelatorioSemanal com</span>
+<span id="cb16-2"><a href></a>resumo.py; (3) formata uma mensagem de WhatsApp legível a partir do schema</span>
+<span id="cb16-3"><a href></a>(título em negrito com *asteriscos*, bullets com &quot;• &quot;, e o alerta no fim se</span>
+<span id="cb16-4"><a href></a>existir); (4) envia com whatsapp.py. Logue cada etapa em português e não envie</span>
+<span id="cb16-5"><a href></a>nada se a coleta vier vazia.</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
@@ -1944,12 +1989,12 @@ display:block!important;
 <section id="bloco-5-agendar-para-toda-semana" class="slide level2 smaller">
 <h2>Bloco 5 — Agendar para toda semana</h2>
 <div class="prompt">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb15-1"><a href></a>Quero rodar o main.py toda segunda às 8h. Me dê DUAS opções e os arquivos:</span>
-<span id="cb15-2"><a href></a>1. GitHub Actions: um workflow .github/workflows/semanal.yml com schedule cron</span>
-<span id="cb15-3"><a href></a>   &quot;0 11 * * 1&quot; (UTC), que instala as deps, injeta as chaves via secrets do</span>
-<span id="cb15-4"><a href></a>   repositório e roda python main.py.</span>
-<span id="cb15-5"><a href></a>2. cron local (macOS/Linux): a linha de crontab equivalente, ativando o .venv.</span>
-<span id="cb15-6"><a href></a>Explique os prós de cada um e como cadastrar os secrets no GitHub.</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb17-1"><a href></a>Quero rodar o main.py toda segunda às 8h. Me dê DUAS opções e os arquivos:</span>
+<span id="cb17-2"><a href></a>1. GitHub Actions: um workflow .github/workflows/semanal.yml com schedule cron</span>
+<span id="cb17-3"><a href></a>   &quot;0 11 * * 1&quot; (UTC), que instala as deps, injeta as chaves via secrets do</span>
+<span id="cb17-4"><a href></a>   repositório e roda python main.py.</span>
+<span id="cb17-5"><a href></a>2. cron local (macOS/Linux): a linha de crontab equivalente, ativando o .venv.</span>
+<span id="cb17-6"><a href></a>Explique os prós de cada um e como cadastrar os secrets no GitHub.</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
@@ -1961,7 +2006,7 @@ display:block!important;
 </div>
 <div class="callout-content">
 <p><strong>GitHub Actions</strong> é o caminho “sem servidor”: roda na nuvem, lê as chaves dos <em>secrets</em> do repositório e não depende da sua máquina estar ligada.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb16-1"><a href></a>0 11 * * 1   # toda segunda, 11h UTC (8h em Brasília)</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb18-1"><a href></a>0 11 * * 1   # toda segunda, 11h UTC (8h em Brasília)</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>

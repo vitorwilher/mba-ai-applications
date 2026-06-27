@@ -328,6 +328,46 @@ Quarto roda células **Python** (via Jupyter) e injeta os resultados no document
 que a **regra de ouro** vira engenharia: o número nasce do código que rodou.
 :::
 
+## Passo 5 — Conectar o VS Code ao GitHub {.smaller}
+
+O VS Code já fala Git. Falta **autenticar no GitHub** uma vez:
+
+1. Instale o **Git** ([git-scm.com](https://git-scm.com/downloads)) e configure sua identidade:
+
+```bash
+git config --global user.name  "Seu Nome"
+git config --global user.email "voce@email.com"
+```
+
+2. No VS Code, clique no ícone **Accounts** (canto inferior esquerdo) → *Sign in with GitHub*
+   e autorize no navegador. Pronto: o VS Code passa a **criar repositórios e dar push** por você.
+
+::: {.callout-note}
+Alternativa por terminal: `gh auth login` (do GitHub CLI). A extensão e o CLI usam a mesma
+conta que você criou no Passo 0.
+:::
+
+## Passo 5 — Criar e montar o repositório {.smaller}
+
+Com a conta conectada, criar o repositório da disciplina é **um clique**:
+
+1. Abra a pasta do projeto no VS Code (*File → Open Folder*)
+2. Painel **Source Control** (`Ctrl/Cmd+Shift+G`) → *Initialize Repository*
+3. Escreva uma mensagem, **Commit**, e clique em **Publish to GitHub** (escolha público/privado)
+
+. . .
+
+Ou deixe o **Claude Code** montar tudo:
+
+::: {.prompt}
+```text
+Inicialize um repositório git nesta pasta, crie a estrutura da disciplina
+(README.md, CLAUDE.md, .gitignore, pasta do projeto), faça o primeiro commit e
+publique no meu GitHub como repositório público com `gh repo create`. Me mostre
+a URL do repositório no final.
+```
+:::
+
 ## Conferindo o ambiente {.smaller}
 
 ```bash
@@ -405,6 +445,8 @@ Garanta que todo número exibido sai de um chunk que roda (regra de ouro).
 - [ ] **Python ≥ 3.10** + `.venv`
 - [ ] **Claude Code** (extensão no VS Code)
 - [ ] **Quarto** + **LaTeX** (`quarto install tinytex`)
+- [ ] **Git** + **GitHub** conectado no VS Code
+- [ ] **Repositório** criado (*Publish to GitHub*)
 :::
 ::: {.column width="50%"}
 **Segredos**

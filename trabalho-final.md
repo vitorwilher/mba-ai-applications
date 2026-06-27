@@ -41,12 +41,28 @@ valor** de forma reprodutível.
 | **5. Avaliação** | Validação com **mais de uma métrica/camada**; análise crítica honesta dos limites. |
 | **6. Implantação** | Produto reprodutível: documento Quarto e/ou automação (ex.: relatório/alerta). |
 
-## 4. Entregáveis
+## 4. Passo 0 — Monte o repositório no GitHub
 
-1. **Repositório Git** (GitHub) contendo:
+Antes de qualquer código, **crie e monte o repositório da disciplina** — é parte da entrega:
+
+1. Conecte o **VS Code ao GitHub** (ícone *Accounts* → *Sign in with GitHub*, ou
+   `gh auth login`) e configure sua identidade (`git config --global user.name/.email`).
+2. Crie o repositório: painel **Source Control** → *Initialize Repository* → **Commit** →
+   **Publish to GitHub**; ou `gh repo create <nome> --public --source=. --remote=origin --push`.
+3. Monte a estrutura inicial (`README.md`, `CLAUDE.md`, `.gitignore`, `.env.example`, pasta
+   do projeto). A skill [`skill-setup-am/`](skill-setup-am/) faz isso por você.
+4. **Versione o trabalho todo**: faça commits ao longo do projeto, não só no final.
+
+> Confirme que o `.gitignore` existe **antes** do primeiro commit, para o `.env` (chaves)
+> nunca subir ao GitHub.
+
+## 5. Entregáveis
+
+1. **Repositório Git** (GitHub) — criado e montado por você (Passo 0) — contendo:
    - `CLAUDE.md` com o briefing do projeto e a regra de ouro;
    - código reprodutível (`requirements.txt`, instruções de `.venv`, `.env.example`);
-   - `README.md` explicando como rodar do zero.
+   - `README.md` explicando como rodar do zero;
+   - histórico de **commits** que mostra a evolução do trabalho.
 2. **Relatório técnico** em **Quarto + LaTeX (PDF)** percorrendo as seis fases do CRISP-DM,
    com os números gerados por código (nenhum digitado à mão). **Use a skill
    [`skill-paper-am/`](skill-paper-am/)**: o `template/paper.qmd` já traz a capa, o cabeçalho
@@ -54,13 +70,13 @@ valor** de forma reprodutível.
 3. **Apresentação para stakeholders** (~10 min): slides no estilo executivo — problema,
    solução, resultado, valor e próximos passos.
 
-## 5. Rubrica de avaliação (100 pontos)
+## 6. Rubrica de avaliação (100 pontos)
 
 | Critério | Pontos | O que se avalia |
 |---|---:|---|
 | **Aderência ao CRISP-DM** | 25 | As seis fases estão presentes, na ordem, e bem justificadas. |
 | **Qualidade técnica** | 25 | LLM via API com saída estruturada; código limpo; baseline; tratamento de erros. |
-| **Reprodutibilidade** | 15 | Roda do zero seguindo o README; segredos fora do git; ambiente isolado. |
+| **Reprodutibilidade** | 15 | Repositório GitHub versionado; roda do zero seguindo o README; segredos fora do git; ambiente isolado. |
 | **Rigor na avaliação** | 15 | Mais de uma métrica/camada; análise honesta de limitações; regra de ouro respeitada. |
 | **Valor de negócio** | 10 | O problema importa e a solução muda uma decisão real. |
 | **Comunicação** | 10 | Relatório e apresentação claros para um público executivo. |
@@ -68,7 +84,7 @@ valor** de forma reprodutível.
 **Bônus (+5):** automação real (agendamento, alerta, envio por WhatsApp/e-mail) entregando
 o resultado sem intervenção manual.
 
-## 6. Sugestões de tema (opcional)
+## 7. Sugestões de tema (opcional)
 
 - **Digest semanal** de um indicador setorial, resumido por LLM e enviado por WhatsApp/e-mail
   (parte de hoje, em outro domínio).
@@ -77,7 +93,7 @@ o resultado sem intervenção manual.
 - **Índice de sentimento/tom** de notícias ou relatórios de um setor (no espírito do COPOM).
 - **Triagem/priorização** de leads, chamados ou riscos com score gerado por LLM.
 
-## 7. Prazos e formato de entrega
+## 8. Prazos e formato de entrega
 
 - **Definição do tema:** combinar com o professor antes da fase de Modelagem.
 - **Entrega final:** link do repositório GitHub (público ou com acesso ao professor) +

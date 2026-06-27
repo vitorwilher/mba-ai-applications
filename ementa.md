@@ -71,7 +71,7 @@ Projeto: <https://vitorwilher.github.io/anthropic-academy-cursos/projetos/sentim
 Apresentação de fechamento em três partes:
 1. **Recapitulação da CRISP-DM aplicada a agentes** (fixação por repetição, via COPOM).
 2. **Setup do ambiente de trabalho**: VS Code + Python + extensão do Claude Code +
-   integração Quarto + LaTeX.
+   integração Quarto + LaTeX, e **conexão VS Code ↔ GitHub** (criar e publicar o repositório).
 3. **Projeto-exemplo de automação**: coletar dados → resumir com LLM → enviar **relatório
    semanal pelo WhatsApp** (inspirado num digest semanal).
 
