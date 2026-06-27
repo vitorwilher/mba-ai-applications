@@ -170,6 +170,53 @@ Sair desta parte com um ambiente onde você:
 para o trabalho final.
 :::
 
+## Passo 0 — As contas (1/2) {.smaller}
+
+Antes de instalar nada, crie as contas. Comece pelas duas que sustentam o fluxo de trabalho:
+
+| Conta | Onde criar | Para quê |
+|---|---|---|
+| **Claude.ai** | [claude.ai](https://claude.ai) → *Sign up* | Conversar com o Claude e usar o **Claude Code** logado na conta |
+| **GitHub** | [github.com/signup](https://github.com/signup) | Versionar o código e usar o **GitHub Actions** como orquestrador (agendar a automação) |
+
+::: {.callout-note}
+A conta **Claude.ai** dá acesso ao Claude no navegador e autentica a extensão do Claude
+Code. A conta **GitHub** guarda o projeto e roda a automação na nuvem, sem depender da sua
+máquina ligada.
+:::
+
+## Passo 0 — As contas (2/2): chaves de API {.smaller}
+
+Para chamar os modelos **via API** (no código), crie uma conta de desenvolvedor em cada
+provedor e gere a chave:
+
+| Provedor | Onde criar a chave | Variável no `.env` |
+|---|---|---|
+| **Anthropic** | [console.anthropic.com](https://console.anthropic.com) → *Settings → API Keys → Create Key* | `ANTHROPIC_API_KEY` |
+| **Google Gemini** | [aistudio.google.com/apikey](https://aistudio.google.com/apikey) → *Create API key* | `GOOGLE_API_KEY` |
+| **OpenAI** | [platform.openai.com/api-keys](https://platform.openai.com/api-keys) → *Create new secret key* | `OPENAI_API_KEY` |
+
+::: {.callout-important}
+A conta **Claude.ai** (assinatura) é **diferente** da conta de **API da Anthropic**
+(*console*, paga por uso). Para rodar código que chama o modelo, você precisa da **chave de
+API**. A chave aparece **uma única vez** — copie na hora.
+:::
+
+## Passo 0 — Contas: dicas e custos {.smaller}
+
+1. **Anthropic / OpenAI** — adicione um **crédito** (a partir de US\$ 5) e ponha um
+   **limite de gasto** (*usage limit*). Com modelos *small & cheap* e cache, um projeto de
+   aula custa centavos.
+2. **Google AI Studio** — tem **plano gratuito**; o Gemini Flash Lite roda sem cartão na
+   maioria dos casos.
+3. **GitHub** — as chaves vão nos **Secrets** do repositório (*Settings → Secrets and
+   variables → Actions*), nunca no código.
+
+::: {.callout-important}
+Regra de ouro dos segredos: chave de API **só** no `.env` (local, no `.gitignore`) ou nos
+**Secrets** do GitHub (na nuvem). **Nunca** no código nem no commit.
+:::
+
 ## Passo 1 — Instalar o VS Code {.smaller}
 
 - Baixe em **[code.visualstudio.com](https://code.visualstudio.com)** (Windows, macOS, Linux)

@@ -1326,6 +1326,108 @@ display:block!important;
 </div>
 </div>
 </section>
+<section id="passo-0-as-contas-12" class="slide level2 smaller">
+<h2>Passo 0 — As contas (1/2)</h2>
+<p>Antes de instalar nada, crie as contas. Comece pelas duas que sustentam o fluxo de trabalho:</p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Conta</th>
+<th>Onde criar</th>
+<th>Para quê</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Claude.ai</strong></td>
+<td><a href="https://claude.ai">claude.ai</a> → <em>Sign up</em></td>
+<td>Conversar com o Claude e usar o <strong>Claude Code</strong> logado na conta</td>
+</tr>
+<tr class="even">
+<td><strong>GitHub</strong></td>
+<td><a href="https://github.com/signup">github.com/signup</a></td>
+<td>Versionar o código e usar o <strong>GitHub Actions</strong> como orquestrador (agendar a automação)</td>
+</tr>
+</tbody>
+</table>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Nota</strong></p>
+</div>
+<div class="callout-content">
+<p>A conta <strong>Claude.ai</strong> dá acesso ao Claude no navegador e autentica a extensão do Claude Code. A conta <strong>GitHub</strong> guarda o projeto e roda a automação na nuvem, sem depender da sua máquina ligada.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="passo-0-as-contas-22-chaves-de-api" class="slide level2 smaller">
+<h2>Passo 0 — As contas (2/2): chaves de API</h2>
+<p>Para chamar os modelos <strong>via API</strong> (no código), crie uma conta de desenvolvedor em cada provedor e gere a chave:</p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Provedor</th>
+<th>Onde criar a chave</th>
+<th>Variável no <code>.env</code></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Anthropic</strong></td>
+<td><a href="https://console.anthropic.com">console.anthropic.com</a> → <em>Settings → API Keys → Create Key</em></td>
+<td><code>ANTHROPIC_API_KEY</code></td>
+</tr>
+<tr class="even">
+<td><strong>Google Gemini</strong></td>
+<td><a href="https://aistudio.google.com/apikey">aistudio.google.com/apikey</a> → <em>Create API key</em></td>
+<td><code>GOOGLE_API_KEY</code></td>
+</tr>
+<tr class="odd">
+<td><strong>OpenAI</strong></td>
+<td><a href="https://platform.openai.com/api-keys">platform.openai.com/api-keys</a> → <em>Create new secret key</em></td>
+<td><code>OPENAI_API_KEY</code></td>
+</tr>
+</tbody>
+</table>
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Importante</strong></p>
+</div>
+<div class="callout-content">
+<p>A conta <strong>Claude.ai</strong> (assinatura) é <strong>diferente</strong> da conta de <strong>API da Anthropic</strong> (<em>console</em>, paga por uso). Para rodar código que chama o modelo, você precisa da <strong>chave de API</strong>. A chave aparece <strong>uma única vez</strong> — copie na hora.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="passo-0-contas-dicas-e-custos" class="slide level2 smaller">
+<h2>Passo 0 — Contas: dicas e custos</h2>
+<ol type="1">
+<li class="fragment"><strong>Anthropic / OpenAI</strong> — adicione um <strong>crédito</strong> (a partir de US$ 5) e ponha um <strong>limite de gasto</strong> (<em>usage limit</em>). Com modelos <em>small &amp; cheap</em> e cache, um projeto de aula custa centavos.</li>
+<li class="fragment"><strong>Google AI Studio</strong> — tem <strong>plano gratuito</strong>; o Gemini Flash Lite roda sem cartão na maioria dos casos.</li>
+<li class="fragment"><strong>GitHub</strong> — as chaves vão nos <strong>Secrets</strong> do repositório (<em>Settings → Secrets and variables → Actions</em>), nunca no código.</li>
+</ol>
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Importante</strong></p>
+</div>
+<div class="callout-content">
+<p>Regra de ouro dos segredos: chave de API <strong>só</strong> no <code>.env</code> (local, no <code>.gitignore</code>) ou nos <strong>Secrets</strong> do GitHub (na nuvem). <strong>Nunca</strong> no código nem no commit.</p>
+</div>
+</div>
+</div>
+</section>
 <section id="passo-1-instalar-o-vs-code" class="slide level2 smaller">
 <h2>Passo 1 — Instalar o VS Code</h2>
 <ul>
