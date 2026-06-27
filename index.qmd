@@ -1,7 +1,9 @@
 ---
 title: "AI Applications — Síntese e Automação"
-subtitle: "Aula 4: CRISP-DM com agentes, setup do ambiente e um relatório semanal no WhatsApp"
+subtitle: "Objetivo final: **construir um agente do zero** · CRISP-DM, setup do ambiente e um relatório semanal no WhatsApp"
 author: "Vitor Wilher — Análise Macro"
+date: "2026-07-02"
+date-format: "D [de] MMMM [de] YYYY"
 lang: pt
 format:
   revealjs:
@@ -169,6 +171,13 @@ A ideia: instalar **o mínimo na mão** e deixar o **agente guiar todo o resto**
 ::: {.callout-tip}
 Só a Fase 1 é manual. Depois dela, você **conversa com o agente** e ele conduz o passo a passo.
 :::
+
+## O fluxo do setup, num olhar {.smaller}
+
+![](assets/fluxo-setup.svg)
+
+A parte **azul-marinho** é o que **você** faz (uma vez); a parte **azul** é o que as
+**skills** conduzem — até o **exemplo rodando** e o **paper em PDF**.
 
 ## Fase 1 — O mínimo que você instala na mão {.smaller}
 
@@ -479,6 +488,14 @@ Garanta que todo número exibido sai de um chunk que roda (regra de ouro).
 ```
 :::
 
+## ✅ Checklist — o que é seu, o que é da skill {.smaller}
+
+![](assets/fluxo-setup.svg)
+
+**Você (1×):** VS Code + Claude Code + conta Claude. **A skill conduz o resto** —
+ferramentas, chaves de API, conta Meta, GitHub — até o exemplo rodar. A lista completa,
+item a item, no próximo slide.
+
 ## ✅ Checklist da aula — tudo que você precisa {.smaller}
 
 :::: {.columns}
@@ -571,6 +588,14 @@ Repare: é **a mesma metodologia da Parte 1**. Mudou o domínio, não o mapa.
 Cada módulo vira **um ou mais prompts** para o Claude Code. O agente escreve; você confere
 o método e a factualidade.
 :::
+
+## Quem automatiza: o GitHub Actions {.smaller}
+
+![](assets/fluxo-automacao.svg)
+
+O **GitHub Actions** é o que transforma o script num **produto que roda sozinho**: um
+agendador (*cron*) dispara o `main.py` **toda semana, na nuvem** — coleta → resumo (LLM) →
+WhatsApp — sem servidor e sem a sua máquina ligada.
 
 ## Bloco 1 — Coleta dos dados da semana {.smaller}
 

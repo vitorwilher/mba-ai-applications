@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 390" font-family="Inter, 'Helvetica Neue', Arial, sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#1c2d4f"/>
+    </marker>
+    <clipPath id="c1"><rect x="20"  y="60" width="300" height="270" rx="14"/></clipPath>
+    <clipPath id="c2"><rect x="360" y="60" width="300" height="270" rx="14"/></clipPath>
+    <clipPath id="c3"><rect x="700" y="60" width="420" height="270" rx="14"/></clipPath>
+    <clipPath id="c4"><rect x="1160" y="60" width="220" height="270" rx="14"/></clipPath>
+  </defs>
+
+  <!-- ===== FASE 1 — VOCÊ (manual) ===== -->
+  <rect x="20" y="60" width="300" height="270" rx="14" fill="#ffffff" stroke="#1c2d4f" stroke-width="3"/>
+  <rect x="20" y="60" width="300" height="46" fill="#1c2d4f" clip-path="url(#c1)"/>
+  <text x="170" y="89" text-anchor="middle" fill="#ffffff" font-size="16" font-weight="700">FASE 1 · VOCÊ (1×)</text>
+  <text x="40" y="146" fill="#16233d" font-size="17">• VS Code</text>
+  <text x="40" y="180" fill="#16233d" font-size="17">• Extensão Claude Code</text>
+  <text x="40" y="214" fill="#16233d" font-size="17">• Conta Claude (login)</text>
+  <text x="40" y="312" fill="#1c2d4f" font-size="13" font-style="italic" font-weight="700">manual — só isto</text>
+
+  <!-- ===== FASE 2 — COPIAR SKILLS ===== -->
+  <rect x="360" y="60" width="300" height="270" rx="14" fill="#ffffff" stroke="#56c2ec" stroke-width="3"/>
+  <rect x="360" y="60" width="300" height="46" fill="#56c2ec" clip-path="url(#c2)"/>
+  <text x="510" y="89" text-anchor="middle" fill="#16233d" font-size="16" font-weight="700">FASE 2 · COPIAR SKILLS</text>
+  <text x="380" y="150" fill="#16233d" font-size="17">• setup-am</text>
+  <text x="380" y="186" fill="#16233d" font-size="17">• paper-analise-macro</text>
+  <text x="380" y="312" fill="#18a0d7" font-size="13" font-style="italic" font-weight="700">do repositório da disciplina</text>
+
+  <!-- ===== FASE 3 — AS SKILLS GUIAM (agente) ===== -->
+  <rect x="700" y="60" width="420" height="270" rx="14" fill="#ffffff" stroke="#18a0d7" stroke-width="3"/>
+  <rect x="700" y="60" width="420" height="46" fill="#18a0d7" clip-path="url(#c3)"/>
+  <text x="910" y="89" text-anchor="middle" fill="#ffffff" font-size="16" font-weight="700">FASE 3 · AS SKILLS GUIAM</text>
+  <text x="720" y="142" fill="#16233d" font-size="16">• Python · Quarto · LaTeX · Git</text>
+  <text x="720" y="174" fill="#16233d" font-size="16">• Chaves de API (3 provedores)</text>
+  <text x="720" y="206" fill="#16233d" font-size="16">• Conta Meta (WhatsApp)</text>
+  <text x="720" y="238" fill="#16233d" font-size="16">• GitHub + repositório</text>
+  <text x="720" y="312" fill="#18a0d7" font-size="13" font-style="italic" font-weight="700">o agente conduz, você confirma</text>
+
+  <!-- ===== RESULTADO ===== -->
+  <rect x="1160" y="60" width="220" height="270" rx="14" fill="#f3f7fb" stroke="#1c2d4f" stroke-width="3"/>
+  <rect x="1160" y="60" width="220" height="46" fill="#1c2d4f" clip-path="url(#c4)"/>
+  <text x="1270" y="89" text-anchor="middle" fill="#ffffff" font-size="16" font-weight="700">RESULTADO</text>
+  <text x="1270" y="170" text-anchor="middle" fill="#16233d" font-size="17">Exemplo</text>
+  <text x="1270" y="196" text-anchor="middle" fill="#16233d" font-size="17">rodando</text>
+  <text x="1270" y="240" text-anchor="middle" fill="#16233d" font-size="17">+ paper PDF</text>
+
+  <!-- ===== Setas ===== -->
+  <line x1="322" y1="195" x2="356" y2="195" stroke="#1c2d4f" stroke-width="3" marker-end="url(#arrow)"/>
+  <line x1="662" y1="195" x2="696" y2="195" stroke="#1c2d4f" stroke-width="3" marker-end="url(#arrow)"/>
+  <line x1="1122" y1="195" x2="1156" y2="195" stroke="#1c2d4f" stroke-width="3" marker-end="url(#arrow)"/>
+
+  <!-- ===== Legenda ===== -->
+  <rect x="20" y="356" width="18" height="18" rx="4" fill="#1c2d4f"/>
+  <text x="46" y="371" fill="#16233d" font-size="15">você (manual)</text>
+  <rect x="210" y="356" width="18" height="18" rx="4" fill="#18a0d7"/>
+  <text x="236" y="371" fill="#16233d" font-size="15">agente / skill</text>
+</svg>
