@@ -715,7 +715,8 @@ O skeleton auditável vive em `projeto-exemplo/` neste repositório: `coleta.py`
 :::: {.columns}
 ::: {.column width="55%"}
 1. **CRISP-DM com agentes** — o mesmo mapa em todo projeto, do COPOM ao digest
-2. **Setup** — VS Code + Python + Claude Code + Quarto + LaTeX, montado uma vez
+2. **Setup** — bootstrap mínimo (VS Code + Claude Code + conta Claude) e as **skills guiam
+   o resto**: Python/Quarto/LaTeX/Git, chaves de API, conta Meta e GitHub — tudo para rodar o exemplo
 3. **Automação** — dados → resumo com LLM → **WhatsApp**, rodando toda semana
 :::
 ::: {.column width="45%"}
