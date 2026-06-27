@@ -35,7 +35,16 @@ Ela cobre, em três partes:
 As skills são apenas **pastas** (`skill-setup-am/`, `skill-paper-am/`). O Claude Code as
 encontra em `~/.claude/skills/` (uso pessoal) ou `.claude/skills/` (dentro de um projeto).
 
-**Opção A — clonar e usar o instalador (recomendado):**
+**Opção mais simples — peça ao Claude Code (passe o endereço do repo):**
+
+```text
+Instale no meu Claude Code as skills deste repositório:
+https://github.com/vitorwilher/mba-ai-applications
+Clone o repo e copie as pastas skill-setup-am e skill-paper-am para
+~/.claude/skills/ com os nomes setup-am e paper-analise-macro.
+```
+
+**Opção A — clonar e usar o instalador:**
 
 ```bash
 git clone https://github.com/vitorwilher/mba-ai-applications.git

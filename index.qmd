@@ -203,21 +203,26 @@ Skill é só uma **pasta** que o Claude Code encontra em `~/.claude/skills/` (us
 
 ## 🧩 Como baixar as skills {.smaller}
 
-Clone o repositório e rode o instalador (copia as duas pastas para `~/.claude/skills/`):
+O jeito mais simples: **dê o endereço do repositório ao Claude Code** e peça para instalar:
 
-```bash
-git clone https://github.com/vitorwilher/mba-ai-applications.git
-cd mba-ai-applications
-bash instalar-skills.sh            # ou: bash instalar-skills.sh --projeto
+::: {.prompt}
+```text
+Instale no meu Claude Code as skills deste repositório:
+https://github.com/vitorwilher/mba-ai-applications
+
+Clone o repositório e copie as pastas skill-setup-am e skill-paper-am para
+~/.claude/skills/ com os nomes setup-am e paper-analise-macro. No final, liste
+as skills instaladas.
 ```
+:::
 
 . . .
 
-Sem clonar tudo, baixe **só uma pasta** com o `degit`:
+Prefere fazer na mão? Clone e rode o instalador (ou use o `degit` para uma pasta só):
 
 ```bash
-npx degit vitorwilher/mba-ai-applications/skill-setup-am ~/.claude/skills/setup-am
-npx degit vitorwilher/mba-ai-applications/skill-paper-am ~/.claude/skills/paper-analise-macro
+git clone https://github.com/vitorwilher/mba-ai-applications.git
+cd mba-ai-applications && bash instalar-skills.sh   # → ~/.claude/skills
 ```
 
 ::: {.callout-tip}

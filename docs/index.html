@@ -1372,14 +1372,19 @@ display:block!important;
 </section>
 <section id="como-baixar-as-skills" class="slide level2 smaller">
 <h2>🧩 Como baixar as skills</h2>
-<p>Clone o repositório e rode o instalador (copia as duas pastas para <code>~/.claude/skills/</code>):</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href></a><span class="fu">git</span> clone https://github.com/vitorwilher/mba-ai-applications.git</span>
-<span id="cb1-2"><a href></a><span class="bu">cd</span> mba-ai-applications</span>
-<span id="cb1-3"><a href></a><span class="fu">bash</span> instalar-skills.sh            <span class="co"># ou: bash instalar-skills.sh --projeto</span></span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+<p>O jeito mais simples: <strong>dê o endereço do repositório ao Claude Code</strong> e peça para instalar:</p>
+<div class="prompt">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb1-1"><a href></a>Instale no meu Claude Code as skills deste repositório:</span>
+<span id="cb1-2"><a href></a>https://github.com/vitorwilher/mba-ai-applications</span>
+<span id="cb1-3"><a href></a></span>
+<span id="cb1-4"><a href></a>Clone o repositório e copie as pastas skill-setup-am e skill-paper-am para</span>
+<span id="cb1-5"><a href></a>~/.claude/skills/ com os nomes setup-am e paper-analise-macro. No final, liste</span>
+<span id="cb1-6"><a href></a>as skills instaladas.</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
 <div class="fragment">
-<p>Sem clonar tudo, baixe <strong>só uma pasta</strong> com o <code>degit</code>:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href></a><span class="ex">npx</span> degit vitorwilher/mba-ai-applications/skill-setup-am ~/.claude/skills/setup-am</span>
-<span id="cb2-2"><a href></a><span class="ex">npx</span> degit vitorwilher/mba-ai-applications/skill-paper-am ~/.claude/skills/paper-analise-macro</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Prefere fazer na mão? Clone e rode o instalador (ou use o <code>degit</code> para uma pasta só):</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href></a><span class="fu">git</span> clone https://github.com/vitorwilher/mba-ai-applications.git</span>
+<span id="cb2-2"><a href></a><span class="bu">cd</span> mba-ai-applications <span class="kw">&amp;&amp;</span> <span class="fu">bash</span> instalar-skills.sh   <span class="co"># → ~/.claude/skills</span></span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
